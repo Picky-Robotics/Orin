@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orin/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/orin/Orin/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
+CMAKE_BINARY_DIR = /home/orin/Orin/catkin_ws/build
 
 # Utility rule file for _ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
 include mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/progress.make
 
 mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus:
-	cd /home/orin/catkin_ws/build/mycobot_ros/ultraArm/ultraarm_communication && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py ultraarm_communication /home/orin/catkin_ws/src/mycobot_ros/ultraArm/ultraarm_communication/msg/ultraArmGripperStatus.msg 
+	cd /home/orin/Orin/catkin_ws/build/mycobot_ros/ultraArm/ultraarm_communication && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py ultraarm_communication /home/orin/Orin/catkin_ws/src/mycobot_ros/ultraArm/ultraarm_communication/msg/ultraArmGripperStatus.msg 
 
 _ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus: mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus
 _ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus: mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/build.make
@@ -67,10 +67,10 @@ mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_g
 .PHONY : mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/build
 
 mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/clean:
-	cd /home/orin/catkin_ws/build/mycobot_ros/ultraArm/ultraarm_communication && $(CMAKE_COMMAND) -P CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/cmake_clean.cmake
+	cd /home/orin/Orin/catkin_ws/build/mycobot_ros/ultraArm/ultraarm_communication && $(CMAKE_COMMAND) -P CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/cmake_clean.cmake
 .PHONY : mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/clean
 
 mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/depend:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orin/catkin_ws/src /home/orin/catkin_ws/src/mycobot_ros/ultraArm/ultraarm_communication /home/orin/catkin_ws/build /home/orin/catkin_ws/build/mycobot_ros/ultraArm/ultraarm_communication /home/orin/catkin_ws/build/mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orin/Orin/catkin_ws/src /home/orin/Orin/catkin_ws/src/mycobot_ros/ultraArm/ultraarm_communication /home/orin/Orin/catkin_ws/build /home/orin/Orin/catkin_ws/build/mycobot_ros/ultraArm/ultraarm_communication /home/orin/Orin/catkin_ws/build/mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : mycobot_ros/ultraArm/ultraarm_communication/CMakeFiles/_ultraarm_communication_generate_messages_check_deps_ultraArmGripperStatus.dir/depend
 

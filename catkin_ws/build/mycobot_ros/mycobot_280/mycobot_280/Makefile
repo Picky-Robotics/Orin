@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orin/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/orin/Orin/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
+CMAKE_BINARY_DIR = /home/orin/Orin/catkin_ws/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -124,16 +124,27 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/orin/catkin_ws/build/CMakeFiles /home/orin/catkin_ws/build/mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/progress.marks
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/catkin_ws/build/CMakeFiles 0
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles /home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/progress.marks
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/clean
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/preinstall
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/preinstall
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/rule
 .PHONY : mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/rule
 
 # Convenience name for target.
@@ -168,12 +179,12 @@ camera_display: mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.di
 
 # fast build rule for target.
 camera_display/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/build
 .PHONY : camera_display/fast
 
 # Convenience name for target.
 mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/rule
 .PHONY : mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/rule
 
 # Convenience name for target.
@@ -183,7 +194,7 @@ opencv_camera: mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/
 
 # fast build rule for target.
 opencv_camera/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/build
 .PHONY : opencv_camera/fast
 
 src/camera_display.o: src/camera_display.cpp.o
@@ -192,7 +203,7 @@ src/camera_display.o: src/camera_display.cpp.o
 
 # target to build an object file
 src/camera_display.cpp.o:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/src/camera_display.cpp.o
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/src/camera_display.cpp.o
 .PHONY : src/camera_display.cpp.o
 
 src/camera_display.i: src/camera_display.cpp.i
@@ -201,7 +212,7 @@ src/camera_display.i: src/camera_display.cpp.i
 
 # target to preprocess a source file
 src/camera_display.cpp.i:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/src/camera_display.cpp.i
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/src/camera_display.cpp.i
 .PHONY : src/camera_display.cpp.i
 
 src/camera_display.s: src/camera_display.cpp.s
@@ -210,7 +221,7 @@ src/camera_display.s: src/camera_display.cpp.s
 
 # target to generate assembly for a file
 src/camera_display.cpp.s:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/src/camera_display.cpp.s
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/camera_display.dir/src/camera_display.cpp.s
 .PHONY : src/camera_display.cpp.s
 
 src/opencv_camera.o: src/opencv_camera.cpp.o
@@ -219,7 +230,7 @@ src/opencv_camera.o: src/opencv_camera.cpp.o
 
 # target to build an object file
 src/opencv_camera.cpp.o:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/src/opencv_camera.cpp.o
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/src/opencv_camera.cpp.o
 .PHONY : src/opencv_camera.cpp.o
 
 src/opencv_camera.i: src/opencv_camera.cpp.i
@@ -228,7 +239,7 @@ src/opencv_camera.i: src/opencv_camera.cpp.i
 
 # target to preprocess a source file
 src/opencv_camera.cpp.i:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/src/opencv_camera.cpp.i
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/src/opencv_camera.cpp.i
 .PHONY : src/opencv_camera.cpp.i
 
 src/opencv_camera.s: src/opencv_camera.cpp.s
@@ -237,7 +248,7 @@ src/opencv_camera.s: src/opencv_camera.cpp.s
 
 # target to generate assembly for a file
 src/opencv_camera.cpp.s:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/src/opencv_camera.cpp.s
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/build.make mycobot_ros/mycobot_280/mycobot_280/CMakeFiles/opencv_camera.dir/src/opencv_camera.cpp.s
 .PHONY : src/opencv_camera.cpp.s
 
 # Help Target
@@ -252,6 +263,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... camera_display"
 	@echo "... opencv_camera"
 	@echo "... src/camera_display.o"
@@ -271,6 +283,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

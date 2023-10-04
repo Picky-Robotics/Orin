@@ -1,8 +1,8 @@
-# Install script for directory: /home/orin/catkin_ws/src/mycobot_ros/mypalletizer_260/mypalletizer_260_pi
+# Install script for directory: /home/orin/Orin/catkin_ws/src/mycobot_ros/mypalletizer_260/mypalletizer_260_pi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/orin/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/orin/Orin/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -38,61 +38,61 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/mypalletizer_260_pi.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/mypalletizer_260_pi.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mypalletizer_260_pi/cmake" TYPE FILE FILES
-    "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/mypalletizer_260_piConfig.cmake"
-    "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/mypalletizer_260_piConfig-version.cmake"
+    "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/mypalletizer_260_piConfig.cmake"
+    "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/mypalletizer_260_piConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mypalletizer_260_pi" TYPE FILE FILES "/home/orin/catkin_ws/src/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mypalletizer_260_pi" TYPE FILE FILES "/home/orin/Orin/catkin_ws/src/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/follow_display.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/follow_display.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/slider_control.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/slider_control.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/teleop_keyboard.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/teleop_keyboard.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/listen_real.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/listen_real.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/listen_real_of_topic.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/listen_real_of_topic.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/detect_marker.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/detect_marker.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/following_marker.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/following_marker.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/follow_and_pump.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/follow_and_pump.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/simple_gui.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/mypalletizer_260_pi" TYPE PROGRAM FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/catkin_generated/installspace/simple_gui.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mypalletizer_260_pi" TYPE DIRECTORY FILES "/home/orin/catkin_ws/src/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/launch" REGEX "/setup\\_assistant\\.launch$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mypalletizer_260_pi" TYPE DIRECTORY FILES "/home/orin/Orin/catkin_ws/src/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/launch" REGEX "/setup\\_assistant\\.launch$" EXCLUDE)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mypalletizer_260_pi" TYPE DIRECTORY FILES "/home/orin/catkin_ws/src/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/config")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mypalletizer_260_pi" TYPE DIRECTORY FILES "/home/orin/Orin/catkin_ws/src/mycobot_ros/mypalletizer_260/mypalletizer_260_pi/config")
 endif()
 

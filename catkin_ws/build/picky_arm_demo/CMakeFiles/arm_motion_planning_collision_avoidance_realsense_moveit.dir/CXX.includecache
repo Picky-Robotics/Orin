@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/orin/catkin_ws/src/picky_arm_demo/src/arm_motion_planning_collision_avoidance_realsense_moveit.cpp
+/home/orin/Orin/catkin_ws/src/picky_arm_demo/src/arm_motion_planning_collision_avoidance_realsense_moveit.cpp
 ros/ros.h
 -
 moveit/move_group_interface/move_group_interface.h

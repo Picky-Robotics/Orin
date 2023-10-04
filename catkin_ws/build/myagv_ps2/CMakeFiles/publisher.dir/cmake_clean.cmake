@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/orin/catkin_ws/devel/lib/myagv_ps2/publisher"
-  "/home/orin/catkin_ws/devel/lib/myagv_ps2/publisher.pdb"
+  "/home/orin/Orin/catkin_ws/devel/lib/myagv_ps2/publisher"
+  "/home/orin/Orin/catkin_ws/devel/lib/myagv_ps2/publisher.pdb"
   "CMakeFiles/publisher.dir/src/carcontrol.cpp.o"
 )
 

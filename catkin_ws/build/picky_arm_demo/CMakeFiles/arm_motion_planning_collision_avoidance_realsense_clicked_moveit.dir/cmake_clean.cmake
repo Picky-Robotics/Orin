@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/orin/catkin_ws/devel/lib/picky_arm_demo/arm_motion_planning_collision_avoidance_realsense_clicked_moveit"
-  "/home/orin/catkin_ws/devel/lib/picky_arm_demo/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.pdb"
+  "/home/orin/Orin/catkin_ws/devel/lib/picky_arm_demo/arm_motion_planning_collision_avoidance_realsense_clicked_moveit"
+  "/home/orin/Orin/catkin_ws/devel/lib/picky_arm_demo/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.pdb"
   "CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/src/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.cpp.o"
 )
 

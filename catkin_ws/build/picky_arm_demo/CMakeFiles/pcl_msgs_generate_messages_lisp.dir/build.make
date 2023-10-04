@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orin/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/orin/Orin/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
+CMAKE_BINARY_DIR = /home/orin/Orin/catkin_ws/build
 
 # Utility rule file for pcl_msgs_generate_messages_lisp.
 
@@ -63,10 +63,10 @@ picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build: pcl_msgs_ge
 .PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build
 
 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/clean:
-	cd /home/orin/catkin_ws/build/picky_arm_demo && $(CMAKE_COMMAND) -P CMakeFiles/pcl_msgs_generate_messages_lisp.dir/cmake_clean.cmake
+	cd /home/orin/Orin/catkin_ws/build/picky_arm_demo && $(CMAKE_COMMAND) -P CMakeFiles/pcl_msgs_generate_messages_lisp.dir/cmake_clean.cmake
 .PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/clean
 
 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/depend:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orin/catkin_ws/src /home/orin/catkin_ws/src/picky_arm_demo /home/orin/catkin_ws/build /home/orin/catkin_ws/build/picky_arm_demo /home/orin/catkin_ws/build/picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orin/Orin/catkin_ws/src /home/orin/Orin/catkin_ws/src/picky_arm_demo /home/orin/Orin/catkin_ws/build /home/orin/Orin/catkin_ws/build/picky_arm_demo /home/orin/Orin/catkin_ws/build/picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/depend
 

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orin/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/orin/Orin/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
+CMAKE_BINARY_DIR = /home/orin/Orin/catkin_ws/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -92,6 +92,27 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -114,26 +135,16 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/orin/catkin_ws/build/CMakeFiles /home/orin/catkin_ws/build/myagv_navigation/CMakeFiles/progress.marks
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/catkin_ws/build/CMakeFiles 0
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles /home/orin/Orin/catkin_ws/build/myagv_navigation/CMakeFiles/progress.marks
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/clean
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/preinstall
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/preinstall
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/rule
 .PHONY : myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -168,12 +179,12 @@ move_base_msgs_generate_messages_cpp: myagv_navigation/CMakeFiles/move_base_msgs
 
 # fast build rule for target.
 move_base_msgs_generate_messages_cpp/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/build.make myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/build.make myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/build
 .PHONY : move_base_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_eus.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_eus.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_eus.dir/rule
 .PHONY : myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
@@ -183,27 +194,12 @@ move_base_msgs_generate_messages_eus: myagv_navigation/CMakeFiles/move_base_msgs
 
 # fast build rule for target.
 move_base_msgs_generate_messages_eus/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_eus.dir/build.make myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_eus.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_eus.dir/build.make myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_eus.dir/build
 .PHONY : move_base_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
-.PHONY : myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-move_base_msgs_generate_messages_lisp: myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : move_base_msgs_generate_messages_lisp
-
-# fast build rule for target.
-move_base_msgs_generate_messages_lisp/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/build.make myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/build
-.PHONY : move_base_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule
 .PHONY : myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
@@ -213,12 +209,12 @@ move_base_msgs_generate_messages_nodejs: myagv_navigation/CMakeFiles/move_base_m
 
 # fast build rule for target.
 move_base_msgs_generate_messages_nodejs/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/build.make myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/build.make myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/build
 .PHONY : move_base_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule
 .PHONY : myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
@@ -228,12 +224,12 @@ visualization_msgs_generate_messages_eus: myagv_navigation/CMakeFiles/visualizat
 
 # fast build rule for target.
 visualization_msgs_generate_messages_eus/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build.make myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build.make myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build
 .PHONY : visualization_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
 .PHONY : myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -243,12 +239,12 @@ visualization_msgs_generate_messages_py: myagv_navigation/CMakeFiles/visualizati
 
 # fast build rule for target.
 visualization_msgs_generate_messages_py/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
 .PHONY : visualization_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
 .PHONY : myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
@@ -258,12 +254,12 @@ move_base_msgs_generate_messages_py: myagv_navigation/CMakeFiles/move_base_msgs_
 
 # fast build rule for target.
 move_base_msgs_generate_messages_py/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/build.make myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/build.make myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/build
 .PHONY : move_base_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/rule
 .PHONY : myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
@@ -273,12 +269,12 @@ visualization_msgs_generate_messages_cpp: myagv_navigation/CMakeFiles/visualizat
 
 # fast build rule for target.
 visualization_msgs_generate_messages_cpp/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build.make myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build.make myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build
 .PHONY : visualization_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
 .PHONY : myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
@@ -288,12 +284,12 @@ visualization_msgs_generate_messages_lisp: myagv_navigation/CMakeFiles/visualiza
 
 # fast build rule for target.
 visualization_msgs_generate_messages_lisp/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
 .PHONY : visualization_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule
 .PHONY : myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
@@ -303,8 +299,23 @@ visualization_msgs_generate_messages_nodejs: myagv_navigation/CMakeFiles/visuali
 
 # fast build rule for target.
 visualization_msgs_generate_messages_nodejs/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build.make myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build.make myagv_navigation/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build
 .PHONY : visualization_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
+.PHONY : myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+move_base_msgs_generate_messages_lisp: myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : move_base_msgs_generate_messages_lisp
+
+# fast build rule for target.
+move_base_msgs_generate_messages_lisp/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/build.make myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/build
+.PHONY : move_base_msgs_generate_messages_lisp/fast
 
 # Help Target
 help:
@@ -315,9 +326,9 @@ help:
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... move_base_msgs_generate_messages_cpp"
 	@echo "... move_base_msgs_generate_messages_eus"
-	@echo "... move_base_msgs_generate_messages_lisp"
 	@echo "... move_base_msgs_generate_messages_nodejs"
 	@echo "... visualization_msgs_generate_messages_eus"
 	@echo "... visualization_msgs_generate_messages_py"
@@ -325,9 +336,10 @@ help:
 	@echo "... visualization_msgs_generate_messages_cpp"
 	@echo "... visualization_msgs_generate_messages_lisp"
 	@echo "... visualization_msgs_generate_messages_nodejs"
+	@echo "... move_base_msgs_generate_messages_lisp"
+	@echo "... test"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... list_install_components"
 .PHONY : help
 
 
@@ -339,6 +351,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

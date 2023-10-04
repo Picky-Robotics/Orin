@@ -1,4 +1,4 @@
-prefix=/home/orin/catkin_ws/devel
+prefix=/home/orin/Orin/catkin_ws/devel
 
 Name: mybuddy_socket_moveit
 Description: Description of mybuddy_socket_moveit

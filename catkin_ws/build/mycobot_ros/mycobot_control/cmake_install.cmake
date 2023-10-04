@@ -1,8 +1,8 @@
-# Install script for directory: /home/orin/catkin_ws/src/mycobot_ros/mycobot_control
+# Install script for directory: /home/orin/Orin/catkin_ws/src/mycobot_ros/mycobot_control
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/orin/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/orin/Orin/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -38,24 +38,24 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/orin/catkin_ws/build/mycobot_ros/mycobot_control/catkin_generated/installspace/mycobot_control.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_control/catkin_generated/installspace/mycobot_control.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mycobot_control/cmake" TYPE FILE FILES
-    "/home/orin/catkin_ws/build/mycobot_ros/mycobot_control/catkin_generated/installspace/mycobot_controlConfig.cmake"
-    "/home/orin/catkin_ws/build/mycobot_ros/mycobot_control/catkin_generated/installspace/mycobot_controlConfig-version.cmake"
+    "/home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_control/catkin_generated/installspace/mycobot_controlConfig.cmake"
+    "/home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_control/catkin_generated/installspace/mycobot_controlConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mycobot_control" TYPE FILE FILES "/home/orin/catkin_ws/src/mycobot_ros/mycobot_control/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mycobot_control" TYPE FILE FILES "/home/orin/Orin/catkin_ws/src/mycobot_ros/mycobot_control/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mycobot_control" TYPE DIRECTORY FILES
-    "/home/orin/catkin_ws/src/mycobot_ros/mycobot_control/config"
-    "/home/orin/catkin_ws/src/mycobot_ros/mycobot_control/launch"
+    "/home/orin/Orin/catkin_ws/src/mycobot_ros/mycobot_control/config"
+    "/home/orin/Orin/catkin_ws/src/mycobot_ros/mycobot_control/launch"
     )
 endif()
 

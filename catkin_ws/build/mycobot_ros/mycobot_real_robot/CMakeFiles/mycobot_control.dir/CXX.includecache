@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/orin/catkin_ws/src/mycobot_ros/mycobot_real_robot/include/mycobot_real_robot/mycobot_hw.h
+/home/orin/Orin/catkin_ws/src/mycobot_ros/mycobot_real_robot/include/mycobot_real_robot/mycobot_hw.h
 ros/ros.h
 -
 hardware_interface/joint_command_interface.h
@@ -20,7 +20,7 @@ std_msgs/Float32MultiArray.h
 vector
 -
 
-/home/orin/catkin_ws/src/mycobot_ros/mycobot_real_robot/src/mycobot_control.cpp
+/home/orin/Orin/catkin_ws/src/mycobot_ros/mycobot_real_robot/src/mycobot_control.cpp
 ros/ros.h
 -
 mycobot_real_robot/mycobot_hw.h
@@ -30,7 +30,7 @@ controller_manager/controller_manager.h
 iostream
 -
 
-/home/orin/catkin_ws/src/mycobot_ros/mycobot_real_robot/src/mycobot_hw.cpp
+/home/orin/Orin/catkin_ws/src/mycobot_ros/mycobot_real_robot/src/mycobot_hw.cpp
 sstream
 -
 mycobot_real_robot/mycobot_hw.h

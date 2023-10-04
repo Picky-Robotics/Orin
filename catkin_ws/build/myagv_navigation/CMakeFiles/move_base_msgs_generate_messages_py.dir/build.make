@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orin/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/orin/Orin/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
+CMAKE_BINARY_DIR = /home/orin/Orin/catkin_ws/build
 
 # Utility rule file for move_base_msgs_generate_messages_py.
 
@@ -63,10 +63,10 @@ myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/build: move_
 .PHONY : myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/build
 
 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/clean:
-	cd /home/orin/catkin_ws/build/myagv_navigation && $(CMAKE_COMMAND) -P CMakeFiles/move_base_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/orin/Orin/catkin_ws/build/myagv_navigation && $(CMAKE_COMMAND) -P CMakeFiles/move_base_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/clean
 
 myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/depend:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orin/catkin_ws/src /home/orin/catkin_ws/src/myagv_navigation /home/orin/catkin_ws/build /home/orin/catkin_ws/build/myagv_navigation /home/orin/catkin_ws/build/myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orin/Orin/catkin_ws/src /home/orin/Orin/catkin_ws/src/myagv_navigation /home/orin/Orin/catkin_ws/build /home/orin/Orin/catkin_ws/build/myagv_navigation /home/orin/Orin/catkin_ws/build/myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : myagv_navigation/CMakeFiles/move_base_msgs_generate_messages_py.dir/depend
 

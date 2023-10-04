@@ -67,14 +67,14 @@ set(mybuddy_socket_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(mybuddy_socket_SOURCE_PREFIX /home/orin/catkin_ws/src/mycobot_ros/Mybuddy/mybuddy_socket)
-  set(mybuddy_socket_DEVEL_PREFIX /home/orin/catkin_ws/devel)
+  set(mybuddy_socket_SOURCE_PREFIX /home/orin/Orin/catkin_ws/src/mycobot_ros/Mybuddy/mybuddy_socket)
+  set(mybuddy_socket_DEVEL_PREFIX /home/orin/Orin/catkin_ws/devel)
   set(mybuddy_socket_INSTALL_PREFIX "")
   set(mybuddy_socket_PREFIX ${mybuddy_socket_DEVEL_PREFIX})
 else()
   set(mybuddy_socket_SOURCE_PREFIX "")
   set(mybuddy_socket_DEVEL_PREFIX "")
-  set(mybuddy_socket_INSTALL_PREFIX /home/orin/catkin_ws/install)
+  set(mybuddy_socket_INSTALL_PREFIX /home/orin/Orin/catkin_ws/install)
   set(mybuddy_socket_PREFIX ${mybuddy_socket_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/orin/catkin_ws/install/lib;/home/orin/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/orin/Orin/catkin_ws/install/lib;/home/orin/Orin/catkin_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

@@ -67,14 +67,14 @@ set(myagv_odometry_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(myagv_odometry_SOURCE_PREFIX /home/orin/catkin_ws/src/myagv_odometry)
-  set(myagv_odometry_DEVEL_PREFIX /home/orin/catkin_ws/devel)
+  set(myagv_odometry_SOURCE_PREFIX /home/orin/Orin/catkin_ws/src/myagv_odometry)
+  set(myagv_odometry_DEVEL_PREFIX /home/orin/Orin/catkin_ws/devel)
   set(myagv_odometry_INSTALL_PREFIX "")
   set(myagv_odometry_PREFIX ${myagv_odometry_DEVEL_PREFIX})
 else()
   set(myagv_odometry_SOURCE_PREFIX "")
   set(myagv_odometry_DEVEL_PREFIX "")
-  set(myagv_odometry_INSTALL_PREFIX /home/orin/catkin_ws/install)
+  set(myagv_odometry_INSTALL_PREFIX /home/orin/Orin/catkin_ws/install)
   set(myagv_odometry_PREFIX ${myagv_odometry_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/orin/catkin_ws/install/lib;/home/orin/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/orin/Orin/catkin_ws/install/lib;/home/orin/Orin/catkin_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

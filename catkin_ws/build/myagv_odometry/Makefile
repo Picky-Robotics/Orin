@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orin/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/orin/Orin/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
+CMAKE_BINARY_DIR = /home/orin/Orin/catkin_ws/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -124,16 +124,27 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/orin/catkin_ws/build/CMakeFiles /home/orin/catkin_ws/build/myagv_odometry/CMakeFiles/progress.marks
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_odometry/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/catkin_ws/build/CMakeFiles 0
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles /home/orin/Orin/catkin_ws/build/myagv_odometry/CMakeFiles/progress.marks
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_odometry/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_odometry/clean
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_odometry/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_odometry/preinstall
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_odometry/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_odometry/preinstall
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_odometry/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/rule
 .PHONY : myagv_odometry/CMakeFiles/myagv_odometry_node.dir/rule
 
 # Convenience name for target.
@@ -168,7 +179,7 @@ myagv_odometry_node: myagv_odometry/CMakeFiles/myagv_odometry_node.dir/rule
 
 # fast build rule for target.
 myagv_odometry_node/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build
 .PHONY : myagv_odometry_node/fast
 
 src/myAGV.o: src/myAGV.cpp.o
@@ -177,7 +188,7 @@ src/myAGV.o: src/myAGV.cpp.o
 
 # target to build an object file
 src/myAGV.cpp.o:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o
 .PHONY : src/myAGV.cpp.o
 
 src/myAGV.i: src/myAGV.cpp.i
@@ -186,7 +197,7 @@ src/myAGV.i: src/myAGV.cpp.i
 
 # target to preprocess a source file
 src/myAGV.cpp.i:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.i
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.i
 .PHONY : src/myAGV.cpp.i
 
 src/myAGV.s: src/myAGV.cpp.s
@@ -195,7 +206,7 @@ src/myAGV.s: src/myAGV.cpp.s
 
 # target to generate assembly for a file
 src/myAGV.cpp.s:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.s
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.s
 .PHONY : src/myAGV.cpp.s
 
 src/myAGVSub.o: src/myAGVSub.cpp.o
@@ -204,7 +215,7 @@ src/myAGVSub.o: src/myAGVSub.cpp.o
 
 # target to build an object file
 src/myAGVSub.cpp.o:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o
 .PHONY : src/myAGVSub.cpp.o
 
 src/myAGVSub.i: src/myAGVSub.cpp.i
@@ -213,7 +224,7 @@ src/myAGVSub.i: src/myAGVSub.cpp.i
 
 # target to preprocess a source file
 src/myAGVSub.cpp.i:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.i
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.i
 .PHONY : src/myAGVSub.cpp.i
 
 src/myAGVSub.s: src/myAGVSub.cpp.s
@@ -222,7 +233,7 @@ src/myAGVSub.s: src/myAGVSub.cpp.s
 
 # target to generate assembly for a file
 src/myAGVSub.cpp.s:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.s
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.s
 .PHONY : src/myAGVSub.cpp.s
 
 # Help Target
@@ -237,6 +248,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... myagv_odometry_node"
 	@echo "... src/myAGV.o"
 	@echo "... src/myAGV.i"
@@ -255,6 +267,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

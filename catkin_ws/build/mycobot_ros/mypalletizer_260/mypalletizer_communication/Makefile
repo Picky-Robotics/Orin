@@ -48,25 +48,56 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orin/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/orin/Orin/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
+CMAKE_BINARY_DIR = /home/orin/Orin/catkin_ws/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target install
 install: preinstall
@@ -80,28 +111,6 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -114,26 +123,28 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/orin/catkin_ws/build/CMakeFiles /home/orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/progress.marks
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/catkin_ws/build/CMakeFiles 0
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles /home/orin/Orin/catkin_ws/build/mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/progress.marks
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/clean
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,337 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/preinstall
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/preinstall
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_generate_messages_py: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/rule
-
-.PHONY : mypalletizer_communication_generate_messages_py
-
-# fast build rule for target.
-mypalletizer_communication_generate_messages_py/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/build
-.PHONY : mypalletizer_communication_generate_messages_py/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_gennodejs: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/rule
-
-.PHONY : mypalletizer_communication_gennodejs
-
-# fast build rule for target.
-mypalletizer_communication_gennodejs/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/build
-.PHONY : mypalletizer_communication_gennodejs/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_generate_messages_nodejs: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/rule
-
-.PHONY : mypalletizer_communication_generate_messages_nodejs
-
-# fast build rule for target.
-mypalletizer_communication_generate_messages_nodejs/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/build
-.PHONY : mypalletizer_communication_generate_messages_nodejs/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_genlisp: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/rule
-
-.PHONY : mypalletizer_communication_genlisp
-
-# fast build rule for target.
-mypalletizer_communication_genlisp/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/build
-.PHONY : mypalletizer_communication_genlisp/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_geneus: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/rule
-
-.PHONY : mypalletizer_communication_geneus
-
-# fast build rule for target.
-mypalletizer_communication_geneus/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/build
-.PHONY : mypalletizer_communication_geneus/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_gencpp: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/rule
-
-.PHONY : mypalletizer_communication_gencpp
-
-# fast build rule for target.
-mypalletizer_communication_gencpp/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/build
-.PHONY : mypalletizer_communication_gencpp/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_generate_messages: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/rule
-
-.PHONY : mypalletizer_communication_generate_messages
-
-# fast build rule for target.
-mypalletizer_communication_generate_messages/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/build
-.PHONY : mypalletizer_communication_generate_messages/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/rule
-
-# Convenience name for target.
-_mypalletizer_communication_generate_messages_check_deps_SetCoords: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/rule
-
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_SetCoords
-
-# fast build rule for target.
-_mypalletizer_communication_generate_messages_check_deps_SetCoords/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/build
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_SetCoords/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/rule
-
-# Convenience name for target.
-_mypalletizer_communication_generate_messages_check_deps_MypalCoords: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/rule
-
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalCoords
-
-# fast build rule for target.
-_mypalletizer_communication_generate_messages_check_deps_MypalCoords/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/build
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalCoords/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_generate_messages_cpp: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/rule
-
-.PHONY : mypalletizer_communication_generate_messages_cpp
-
-# fast build rule for target.
-mypalletizer_communication_generate_messages_cpp/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/build
-.PHONY : mypalletizer_communication_generate_messages_cpp/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/rule
-
-# Convenience name for target.
-_mypalletizer_communication_generate_messages_check_deps_PumpStatus: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/rule
-
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_PumpStatus
-
-# fast build rule for target.
-_mypalletizer_communication_generate_messages_check_deps_PumpStatus/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/build
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_PumpStatus/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_generate_messages_eus: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/rule
-
-.PHONY : mypalletizer_communication_generate_messages_eus
-
-# fast build rule for target.
-mypalletizer_communication_generate_messages_eus/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/build
-.PHONY : mypalletizer_communication_generate_messages_eus/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/rule
-
-# Convenience name for target.
-_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/rule
-
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalSetAngles
-
-# fast build rule for target.
-_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/build
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalSetAngles/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/rule
-
-# Convenience name for target.
-_mypalletizer_communication_generate_messages_check_deps_GripperStatus: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/rule
-
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_GripperStatus
-
-# fast build rule for target.
-_mypalletizer_communication_generate_messages_check_deps_GripperStatus/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/build
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_GripperStatus/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/rule
-
-# Convenience name for target.
-_mypalletizer_communication_generate_messages_check_deps_GetAngles: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/rule
-
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_GetAngles
-
-# fast build rule for target.
-_mypalletizer_communication_generate_messages_check_deps_GetAngles/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/build
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_GetAngles/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_generate_messages_lisp: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/rule
-
-.PHONY : mypalletizer_communication_generate_messages_lisp
-
-# fast build rule for target.
-mypalletizer_communication_generate_messages_lisp/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/build
-.PHONY : mypalletizer_communication_generate_messages_lisp/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/rule
-
-# Convenience name for target.
-_mypalletizer_communication_generate_messages_check_deps_MypalAngles: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/rule
-
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalAngles
-
-# fast build rule for target.
-_mypalletizer_communication_generate_messages_check_deps_MypalAngles/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/build
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalAngles/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/rule
-
-# Convenience name for target.
-_mypalletizer_communication_generate_messages_check_deps_GetCoords: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/rule
-
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_GetCoords
-
-# fast build rule for target.
-_mypalletizer_communication_generate_messages_check_deps_GetCoords/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/build
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_GetCoords/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/rule
-
-# Convenience name for target.
-_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/rule
-
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalSetCoords
-
-# fast build rule for target.
-_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/build
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalSetCoords/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/rule
-
-# Convenience name for target.
-mypalletizer_communication_genpy: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/rule
-
-.PHONY : mypalletizer_communication_genpy
-
-# fast build rule for target.
-mypalletizer_communication_genpy/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/build
-.PHONY : mypalletizer_communication_genpy/fast
-
-# Convenience name for target.
-mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/rule
-.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/rule
-
-# Convenience name for target.
-_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/rule
-
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus
-
-# fast build rule for target.
-_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/build
-.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus/fast
-
-# Convenience name for target.
 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus.dir/rule
 .PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus.dir/rule
 
 # Convenience name for target.
@@ -483,12 +179,57 @@ _mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus: myc
 
 # fast build rule for target.
 _mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus.dir/build
 .PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus/fast
 
 # Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/rule
+
+# Convenience name for target.
+_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/rule
+
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus
+
+# fast build rule for target.
+_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus.dir/build
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_genpy: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/rule
+
+.PHONY : mypalletizer_communication_genpy
+
+# fast build rule for target.
+mypalletizer_communication_genpy/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genpy.dir/build
+.PHONY : mypalletizer_communication_genpy/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/rule
+
+# Convenience name for target.
+_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/rule
+
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalSetCoords
+
+# fast build rule for target.
+_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetCoords.dir/build
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalSetCoords/fast
+
+# Convenience name for target.
 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetAngles.dir/rule:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetAngles.dir/rule
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetAngles.dir/rule
 .PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetAngles.dir/rule
 
 # Convenience name for target.
@@ -498,8 +239,278 @@ _mypalletizer_communication_generate_messages_check_deps_SetAngles: mycobot_ros/
 
 # fast build rule for target.
 _mypalletizer_communication_generate_messages_check_deps_SetAngles/fast:
-	cd /home/orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetAngles.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetAngles.dir/build
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetAngles.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetAngles.dir/build
 .PHONY : _mypalletizer_communication_generate_messages_check_deps_SetAngles/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_generate_messages_lisp: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/rule
+
+.PHONY : mypalletizer_communication_generate_messages_lisp
+
+# fast build rule for target.
+mypalletizer_communication_generate_messages_lisp/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_lisp.dir/build
+.PHONY : mypalletizer_communication_generate_messages_lisp/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/rule
+
+# Convenience name for target.
+_mypalletizer_communication_generate_messages_check_deps_GetAngles: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/rule
+
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_GetAngles
+
+# fast build rule for target.
+_mypalletizer_communication_generate_messages_check_deps_GetAngles/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetAngles.dir/build
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_GetAngles/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/rule
+
+# Convenience name for target.
+_mypalletizer_communication_generate_messages_check_deps_GripperStatus: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/rule
+
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_GripperStatus
+
+# fast build rule for target.
+_mypalletizer_communication_generate_messages_check_deps_GripperStatus/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GripperStatus.dir/build
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_GripperStatus/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/rule
+
+# Convenience name for target.
+_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/rule
+
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalSetAngles
+
+# fast build rule for target.
+_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalSetAngles.dir/build
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalSetAngles/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_generate_messages_eus: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/rule
+
+.PHONY : mypalletizer_communication_generate_messages_eus
+
+# fast build rule for target.
+mypalletizer_communication_generate_messages_eus/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_eus.dir/build
+.PHONY : mypalletizer_communication_generate_messages_eus/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/rule
+
+# Convenience name for target.
+_mypalletizer_communication_generate_messages_check_deps_PumpStatus: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/rule
+
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_PumpStatus
+
+# fast build rule for target.
+_mypalletizer_communication_generate_messages_check_deps_PumpStatus/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_PumpStatus.dir/build
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_PumpStatus/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_generate_messages_cpp: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/rule
+
+.PHONY : mypalletizer_communication_generate_messages_cpp
+
+# fast build rule for target.
+mypalletizer_communication_generate_messages_cpp/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_cpp.dir/build
+.PHONY : mypalletizer_communication_generate_messages_cpp/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/rule
+
+# Convenience name for target.
+_mypalletizer_communication_generate_messages_check_deps_MypalCoords: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/rule
+
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalCoords
+
+# fast build rule for target.
+_mypalletizer_communication_generate_messages_check_deps_MypalCoords/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalCoords.dir/build
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalCoords/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_generate_messages: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/rule
+
+.PHONY : mypalletizer_communication_generate_messages
+
+# fast build rule for target.
+mypalletizer_communication_generate_messages/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages.dir/build
+.PHONY : mypalletizer_communication_generate_messages/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/rule
+
+# Convenience name for target.
+_mypalletizer_communication_generate_messages_check_deps_GetCoords: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/rule
+
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_GetCoords
+
+# fast build rule for target.
+_mypalletizer_communication_generate_messages_check_deps_GetCoords/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_GetCoords.dir/build
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_GetCoords/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/rule
+
+# Convenience name for target.
+_mypalletizer_communication_generate_messages_check_deps_SetCoords: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/rule
+
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_SetCoords
+
+# fast build rule for target.
+_mypalletizer_communication_generate_messages_check_deps_SetCoords/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_SetCoords.dir/build
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_SetCoords/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_gencpp: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/rule
+
+.PHONY : mypalletizer_communication_gencpp
+
+# fast build rule for target.
+mypalletizer_communication_gencpp/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gencpp.dir/build
+.PHONY : mypalletizer_communication_gencpp/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_geneus: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/rule
+
+.PHONY : mypalletizer_communication_geneus
+
+# fast build rule for target.
+mypalletizer_communication_geneus/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_geneus.dir/build
+.PHONY : mypalletizer_communication_geneus/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_generate_messages_nodejs: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/rule
+
+.PHONY : mypalletizer_communication_generate_messages_nodejs
+
+# fast build rule for target.
+mypalletizer_communication_generate_messages_nodejs/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_nodejs.dir/build
+.PHONY : mypalletizer_communication_generate_messages_nodejs/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/rule
+
+# Convenience name for target.
+_mypalletizer_communication_generate_messages_check_deps_MypalAngles: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/rule
+
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalAngles
+
+# fast build rule for target.
+_mypalletizer_communication_generate_messages_check_deps_MypalAngles/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/_mypalletizer_communication_generate_messages_check_deps_MypalAngles.dir/build
+.PHONY : _mypalletizer_communication_generate_messages_check_deps_MypalAngles/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_gennodejs: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/rule
+
+.PHONY : mypalletizer_communication_gennodejs
+
+# fast build rule for target.
+mypalletizer_communication_gennodejs/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_gennodejs.dir/build
+.PHONY : mypalletizer_communication_gennodejs/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_genlisp: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/rule
+
+.PHONY : mypalletizer_communication_genlisp
+
+# fast build rule for target.
+mypalletizer_communication_genlisp/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_genlisp.dir/build
+.PHONY : mypalletizer_communication_genlisp/fast
+
+# Convenience name for target.
+mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/rule
+.PHONY : mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/rule
+
+# Convenience name for target.
+mypalletizer_communication_generate_messages_py: mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/rule
+
+.PHONY : mypalletizer_communication_generate_messages_py
+
+# fast build rule for target.
+mypalletizer_communication_generate_messages_py/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/build.make mycobot_ros/mypalletizer_260/mypalletizer_communication/CMakeFiles/mypalletizer_communication_generate_messages_py.dir/build
+.PHONY : mypalletizer_communication_generate_messages_py/fast
 
 # Help Target
 help:
@@ -507,35 +518,36 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/local"
-	@echo "... mypalletizer_communication_generate_messages_py"
-	@echo "... mypalletizer_communication_gennodejs"
-	@echo "... mypalletizer_communication_generate_messages_nodejs"
-	@echo "... mypalletizer_communication_genlisp"
-	@echo "... install"
-	@echo "... mypalletizer_communication_geneus"
-	@echo "... mypalletizer_communication_gencpp"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... mypalletizer_communication_generate_messages"
-	@echo "... _mypalletizer_communication_generate_messages_check_deps_SetCoords"
-	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalCoords"
-	@echo "... mypalletizer_communication_generate_messages_cpp"
-	@echo "... _mypalletizer_communication_generate_messages_check_deps_PumpStatus"
-	@echo "... mypalletizer_communication_generate_messages_eus"
-	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalSetAngles"
-	@echo "... _mypalletizer_communication_generate_messages_check_deps_GripperStatus"
-	@echo "... _mypalletizer_communication_generate_messages_check_deps_GetAngles"
-	@echo "... install/strip"
-	@echo "... mypalletizer_communication_generate_messages_lisp"
-	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalAngles"
-	@echo "... _mypalletizer_communication_generate_messages_check_deps_GetCoords"
-	@echo "... list_install_components"
-	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalSetCoords"
-	@echo "... mypalletizer_communication_genpy"
-	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus"
 	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalGripperStatus"
+	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalPumpStatus"
+	@echo "... mypalletizer_communication_genpy"
+	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalSetCoords"
 	@echo "... _mypalletizer_communication_generate_messages_check_deps_SetAngles"
+	@echo "... mypalletizer_communication_generate_messages_lisp"
+	@echo "... _mypalletizer_communication_generate_messages_check_deps_GetAngles"
+	@echo "... list_install_components"
+	@echo "... _mypalletizer_communication_generate_messages_check_deps_GripperStatus"
+	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalSetAngles"
+	@echo "... mypalletizer_communication_generate_messages_eus"
+	@echo "... _mypalletizer_communication_generate_messages_check_deps_PumpStatus"
+	@echo "... mypalletizer_communication_generate_messages_cpp"
+	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalCoords"
+	@echo "... test"
+	@echo "... mypalletizer_communication_generate_messages"
+	@echo "... _mypalletizer_communication_generate_messages_check_deps_GetCoords"
+	@echo "... edit_cache"
+	@echo "... rebuild_cache"
+	@echo "... _mypalletizer_communication_generate_messages_check_deps_SetCoords"
+	@echo "... mypalletizer_communication_gencpp"
+	@echo "... mypalletizer_communication_geneus"
+	@echo "... install"
+	@echo "... mypalletizer_communication_generate_messages_nodejs"
+	@echo "... _mypalletizer_communication_generate_messages_check_deps_MypalAngles"
+	@echo "... mypalletizer_communication_gennodejs"
+	@echo "... install/strip"
+	@echo "... mypalletizer_communication_genlisp"
+	@echo "... mypalletizer_communication_generate_messages_py"
+	@echo "... install/local"
 .PHONY : help
 
 
@@ -547,6 +559,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

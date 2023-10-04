@@ -67,14 +67,14 @@ set(picky_arm_demo_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(picky_arm_demo_SOURCE_PREFIX /home/orin/catkin_ws/src/picky_arm_demo)
-  set(picky_arm_demo_DEVEL_PREFIX /home/orin/catkin_ws/devel)
+  set(picky_arm_demo_SOURCE_PREFIX /home/orin/Orin/catkin_ws/src/picky_arm_demo)
+  set(picky_arm_demo_DEVEL_PREFIX /home/orin/Orin/catkin_ws/devel)
   set(picky_arm_demo_INSTALL_PREFIX "")
   set(picky_arm_demo_PREFIX ${picky_arm_demo_DEVEL_PREFIX})
 else()
   set(picky_arm_demo_SOURCE_PREFIX "")
   set(picky_arm_demo_DEVEL_PREFIX "")
-  set(picky_arm_demo_INSTALL_PREFIX /home/orin/catkin_ws/install)
+  set(picky_arm_demo_INSTALL_PREFIX /home/orin/Orin/catkin_ws/install)
   set(picky_arm_demo_PREFIX ${picky_arm_demo_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/orin/catkin_ws/install/lib;/home/orin/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/orin/Orin/catkin_ws/install/lib;/home/orin/Orin/catkin_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

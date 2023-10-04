@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orin/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/orin/Orin/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
+CMAKE_BINARY_DIR = /home/orin/Orin/catkin_ws/build
 
 # Utility rule file for mycobot_communication_genlisp.
 
@@ -63,10 +63,10 @@ mycobot_ros/mycobot_communication/CMakeFiles/mycobot_communication_genlisp.dir/b
 .PHONY : mycobot_ros/mycobot_communication/CMakeFiles/mycobot_communication_genlisp.dir/build
 
 mycobot_ros/mycobot_communication/CMakeFiles/mycobot_communication_genlisp.dir/clean:
-	cd /home/orin/catkin_ws/build/mycobot_ros/mycobot_communication && $(CMAKE_COMMAND) -P CMakeFiles/mycobot_communication_genlisp.dir/cmake_clean.cmake
+	cd /home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_communication && $(CMAKE_COMMAND) -P CMakeFiles/mycobot_communication_genlisp.dir/cmake_clean.cmake
 .PHONY : mycobot_ros/mycobot_communication/CMakeFiles/mycobot_communication_genlisp.dir/clean
 
 mycobot_ros/mycobot_communication/CMakeFiles/mycobot_communication_genlisp.dir/depend:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orin/catkin_ws/src /home/orin/catkin_ws/src/mycobot_ros/mycobot_communication /home/orin/catkin_ws/build /home/orin/catkin_ws/build/mycobot_ros/mycobot_communication /home/orin/catkin_ws/build/mycobot_ros/mycobot_communication/CMakeFiles/mycobot_communication_genlisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orin/Orin/catkin_ws/src /home/orin/Orin/catkin_ws/src/mycobot_ros/mycobot_communication /home/orin/Orin/catkin_ws/build /home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_communication /home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_communication/CMakeFiles/mycobot_communication_genlisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : mycobot_ros/mycobot_communication/CMakeFiles/mycobot_communication_genlisp.dir/depend
 

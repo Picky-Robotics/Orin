@@ -1,4 +1,4 @@
-prefix=/home/orin/catkin_ws/install
+prefix=/home/orin/Orin/catkin_ws/install
 
 Name: mycobot_move_it_config
 Description: Description of mycobot_move_it_config

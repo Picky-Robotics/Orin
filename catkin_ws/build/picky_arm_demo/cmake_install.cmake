@@ -1,8 +1,8 @@
-# Install script for directory: /home/orin/catkin_ws/src/picky_arm_demo
+# Install script for directory: /home/orin/Orin/catkin_ws/src/picky_arm_demo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/orin/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/orin/Orin/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/orin/catkin_ws/build/picky_arm_demo/catkin_generated/installspace/picky_arm_demo.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/orin/Orin/catkin_ws/build/picky_arm_demo/catkin_generated/installspace/picky_arm_demo.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/picky_arm_demo/cmake" TYPE FILE FILES
-    "/home/orin/catkin_ws/build/picky_arm_demo/catkin_generated/installspace/picky_arm_demoConfig.cmake"
-    "/home/orin/catkin_ws/build/picky_arm_demo/catkin_generated/installspace/picky_arm_demoConfig-version.cmake"
+    "/home/orin/Orin/catkin_ws/build/picky_arm_demo/catkin_generated/installspace/picky_arm_demoConfig.cmake"
+    "/home/orin/Orin/catkin_ws/build/picky_arm_demo/catkin_generated/installspace/picky_arm_demoConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/picky_arm_demo" TYPE FILE FILES "/home/orin/catkin_ws/src/picky_arm_demo/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/picky_arm_demo" TYPE FILE FILES "/home/orin/Orin/catkin_ws/src/picky_arm_demo/package.xml")
 endif()
 

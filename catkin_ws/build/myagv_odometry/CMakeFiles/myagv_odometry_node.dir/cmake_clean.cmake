@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/orin/catkin_ws/devel/lib/myagv_odometry/myagv_odometry_node"
-  "/home/orin/catkin_ws/devel/lib/myagv_odometry/myagv_odometry_node.pdb"
+  "/home/orin/Orin/catkin_ws/devel/lib/myagv_odometry/myagv_odometry_node"
+  "/home/orin/Orin/catkin_ws/devel/lib/myagv_odometry/myagv_odometry_node.pdb"
   "CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o"
   "CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o"
 )

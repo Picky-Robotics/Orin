@@ -1,4 +1,4 @@
-prefix=/home/orin/catkin_ws/devel
+prefix=/home/orin/Orin/catkin_ws/devel
 
 Name: mypalletizer_260_pi
 Description: Description of mypalletizer_260_pi

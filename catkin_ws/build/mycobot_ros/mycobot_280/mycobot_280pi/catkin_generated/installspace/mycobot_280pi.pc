@@ -1,4 +1,4 @@
-prefix=/home/orin/catkin_ws/install
+prefix=/home/orin/Orin/catkin_ws/install
 
 Name: mycobot_280pi
 Description: Description of mycobot_280pi

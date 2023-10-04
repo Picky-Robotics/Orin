@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/orin/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/orin/Orin/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
+CMAKE_BINARY_DIR = /home/orin/Orin/catkin_ws/build
 
 # Utility rule file for _mycobot_320_communication_generate_messages_check_deps_GetCoords.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/orin/catkin_ws/build
 include mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/progress.make
 
 mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords:
-	cd /home/orin/catkin_ws/build/mycobot_ros/mycobot_320/mycobot_320_communication && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py mycobot_320_communication /home/orin/catkin_ws/src/mycobot_ros/mycobot_320/mycobot_320_communication/srv/GetCoords.srv 
+	cd /home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_320/mycobot_320_communication && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py mycobot_320_communication /home/orin/Orin/catkin_ws/src/mycobot_ros/mycobot_320/mycobot_320_communication/srv/GetCoords.srv 
 
 _mycobot_320_communication_generate_messages_check_deps_GetCoords: mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords
 _mycobot_320_communication_generate_messages_check_deps_GetCoords: mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/build.make
@@ -67,10 +67,10 @@ mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_commun
 .PHONY : mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/build
 
 mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/clean:
-	cd /home/orin/catkin_ws/build/mycobot_ros/mycobot_320/mycobot_320_communication && $(CMAKE_COMMAND) -P CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/cmake_clean.cmake
+	cd /home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_320/mycobot_320_communication && $(CMAKE_COMMAND) -P CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/cmake_clean.cmake
 .PHONY : mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/clean
 
 mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/depend:
-	cd /home/orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orin/catkin_ws/src /home/orin/catkin_ws/src/mycobot_ros/mycobot_320/mycobot_320_communication /home/orin/catkin_ws/build /home/orin/catkin_ws/build/mycobot_ros/mycobot_320/mycobot_320_communication /home/orin/catkin_ws/build/mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/orin/Orin/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/orin/Orin/catkin_ws/src /home/orin/Orin/catkin_ws/src/mycobot_ros/mycobot_320/mycobot_320_communication /home/orin/Orin/catkin_ws/build /home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_320/mycobot_320_communication /home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : mycobot_ros/mycobot_320/mycobot_320_communication/CMakeFiles/_mycobot_320_communication_generate_messages_check_deps_GetCoords.dir/depend
 

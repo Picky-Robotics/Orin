@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/orin/catkin_ws/src/myagv_ps2/src/carcontrol.cpp" "/home/orin/catkin_ws/build/myagv_ps2/CMakeFiles/publisher.dir/src/carcontrol.cpp.o"
+  "/home/orin/Orin/catkin_ws/src/myagv_ps2/src/carcontrol.cpp" "/home/orin/Orin/catkin_ws/build/myagv_ps2/CMakeFiles/publisher.dir/src/carcontrol.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,7 +17,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/orin/catkin_ws/src/myagv_ps2/include"
+  "/home/orin/Orin/catkin_ws/src/myagv_ps2/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )
