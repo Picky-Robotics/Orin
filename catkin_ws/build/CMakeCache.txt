@@ -20,6 +20,9 @@ BUILD_GMOCK:BOOL=ON
 //Build dynamically-linked binaries
 BUILD_SHARED_LIBS:BOOL=ON
 
+//Use OpenMP
+BUILD_WITH_OPENMP:BOOL=OFF
+
 //List of ';' separated packages to exclude
 CATKIN_BLACKLIST_PACKAGES:STRING=
 
@@ -376,6 +379,9 @@ RT_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/librt.so
 //Enable debian style python package layout
 SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 
+//Set user wait point in startup (for debug)
+SET_USER_BREAK_AT_STARTUP:BOOL=OFF
+
 //Name of the computer/site where compile is being run
 SITE:STRING=orin
 
@@ -384,6 +390,9 @@ UBUNTU:BOOL=TRUE
 
 //LSB Distrib - codename tag
 UBUNTU_FOCAL:BOOL=TRUE
+
+//Path to a file.
+_file_name:FILEPATH=/home/orin/Orin/catkin_ws/src/ddynamic_reconfigure/test/ddynamic_reconfigure.test
 
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/src/googletest/googlemock/include/gmock/gmock.h
@@ -396,6 +405,9 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
+
+//Path to a file.
+_path_name:FILEPATH=/home/orin/Orin/catkin_ws/src/realsense-ros/realsense2_description/tests
 
 //The directory containing a CMake configuration file for actionlib.
 actionlib_DIR:PATH=/opt/ros/noetic/share/actionlib/cmake
@@ -429,6 +441,24 @@ cpp_common_DIR:PATH=/opt/ros/noetic/share/cpp_common/cmake
 
 //The directory containing a CMake configuration file for cv_bridge.
 cv_bridge_DIR:PATH=/opt/ros/noetic/share/cv_bridge/cmake
+
+//Value Computed by CMake
+ddynamic_reconfigure_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/ddynamic_reconfigure
+
+//The directory containing a CMake configuration file for ddynamic_reconfigure.
+ddynamic_reconfigure_DIR:PATH=/home/orin/Orin/catkin_ws/devel/share/ddynamic_reconfigure/cmake
+
+//Dependencies for the target
+ddynamic_reconfigure_LIB_DEPENDS:STATIC=general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+ddynamic_reconfigure_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/ddynamic_reconfigure
+
+//The directory containing a CMake configuration file for diagnostic_msgs.
+diagnostic_msgs_DIR:PATH=/opt/ros/noetic/share/diagnostic_msgs/cmake
+
+//The directory containing a CMake configuration file for diagnostic_updater.
+diagnostic_updater_DIR:PATH=/opt/ros/noetic/share/diagnostic_updater/cmake
 
 //The directory containing a CMake configuration file for dynamic_reconfigure.
 dynamic_reconfigure_DIR:PATH=/opt/ros/noetic/share/dynamic_reconfigure/cmake
@@ -522,7 +552,7 @@ image_transport_DIR:PATH=/opt/ros/noetic/share/image_transport/cmake
 kdl_parser_DIR:PATH=/opt/ros/noetic/share/kdl_parser/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/noetic/lib/libcv_bridge.so
+lib:FILEPATH=/opt/ros/noetic/lib/libdiagnostic_updater.so
 
 //Value Computed by CMake
 mecharm_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/mycobot_ros/mecharm/mecharm
@@ -824,6 +854,9 @@ mypalletizer_communication_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/myc
 //Value Computed by CMake
 mypalletizer_communication_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/mycobot_ros/mypalletizer_260/mypalletizer_communication
 
+//The directory containing a CMake configuration file for nav_msgs.
+nav_msgs_DIR:PATH=/opt/ros/noetic/share/nav_msgs/cmake
+
 //Value Computed by CMake
 new_mycobot_320_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/mycobot_ros/mycobot_320/new_mycobot_320
 
@@ -887,6 +920,27 @@ pluginlib_DIR:PATH=/opt/ros/noetic/share/pluginlib/cmake
 //The directory containing a CMake configuration file for random_numbers.
 random_numbers_DIR:PATH=/opt/ros/noetic/share/random_numbers/cmake
 
+//The directory containing a CMake configuration file for realsense2.
+realsense2_DIR:PATH=realsense2_DIR-NOTFOUND
+
+//Value Computed by CMake
+realsense2_camera_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/realsense-ros/realsense2_camera
+
+//Value Computed by CMake
+realsense2_camera_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/realsense-ros/realsense2_camera
+
+//Value Computed by CMake
+realsense2_description_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/realsense-ros/realsense2_description
+
+//Value Computed by CMake
+realsense2_description_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/realsense-ros/realsense2_description
+
+//Value Computed by CMake
+rgbd_launch_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/rgbd_launch
+
+//Value Computed by CMake
+rgbd_launch_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/rgbd_launch
+
 //The directory containing a CMake configuration file for rosbag.
 rosbag_DIR:PATH=/opt/ros/noetic/share/rosbag/cmake
 
@@ -914,6 +968,9 @@ rosgraph_DIR:PATH=/opt/ros/noetic/share/rosgraph/cmake
 //The directory containing a CMake configuration file for rosgraph_msgs.
 rosgraph_msgs_DIR:PATH=/opt/ros/noetic/share/rosgraph_msgs/cmake
 
+//The directory containing a CMake configuration file for roslaunch.
+roslaunch_DIR:PATH=/opt/ros/noetic/share/roslaunch/cmake
+
 //The directory containing a CMake configuration file for roslib.
 roslib_DIR:PATH=/opt/ros/noetic/share/roslib/cmake
 
@@ -925,6 +982,9 @@ rospack_DIR:PATH=/opt/ros/noetic/share/rospack/cmake
 
 //The directory containing a CMake configuration file for rospy.
 rospy_DIR:PATH=/opt/ros/noetic/share/rospy/cmake
+
+//The directory containing a CMake configuration file for rostest.
+rostest_DIR:PATH=/opt/ros/noetic/share/rostest/cmake
 
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/noetic/share/rostime/cmake
@@ -1152,7 +1212,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=56
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=51
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -1196,7 +1256,7 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding OpenCV
-FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][v4.5.4(4)]
+FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][v4.5.4()]
 //Details about finding PY_em
 FIND_PACKAGE_MESSAGE_DETAILS_PY_em:INTERNAL=[/usr/lib/python3/dist-packages/em.py][v()]
 //Details about finding PythonInterp
