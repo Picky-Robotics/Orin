@@ -68,17 +68,17 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -101,17 +101,16 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -124,16 +123,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,139 +168,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-picky_arm_demo/CMakeFiles/nodelet_generate_messages_py.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/nodelet_generate_messages_py.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/nodelet_generate_messages_py.dir/rule
+picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/rule
 
 # Convenience name for target.
-nodelet_generate_messages_py: picky_arm_demo/CMakeFiles/nodelet_generate_messages_py.dir/rule
+arm_motion_planning_collision_avoidance_moveit: picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/rule
 
-.PHONY : nodelet_generate_messages_py
+.PHONY : arm_motion_planning_collision_avoidance_moveit
 
 # fast build rule for target.
-nodelet_generate_messages_py/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/nodelet_generate_messages_py.dir/build.make picky_arm_demo/CMakeFiles/nodelet_generate_messages_py.dir/build
-.PHONY : nodelet_generate_messages_py/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/bond_generate_messages_lisp.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/bond_generate_messages_lisp.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/bond_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_lisp: picky_arm_demo/CMakeFiles/bond_generate_messages_lisp.dir/rule
-
-.PHONY : bond_generate_messages_lisp
-
-# fast build rule for target.
-bond_generate_messages_lisp/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/bond_generate_messages_lisp.dir/build.make picky_arm_demo/CMakeFiles/bond_generate_messages_lisp.dir/build
-.PHONY : bond_generate_messages_lisp/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-pcl_msgs_generate_messages_lisp: picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : pcl_msgs_generate_messages_lisp
-
-# fast build rule for target.
-pcl_msgs_generate_messages_lisp/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build.make picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build
-.PHONY : pcl_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/nodelet_generate_messages_eus.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/nodelet_generate_messages_eus.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/nodelet_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-nodelet_generate_messages_eus: picky_arm_demo/CMakeFiles/nodelet_generate_messages_eus.dir/rule
-
-.PHONY : nodelet_generate_messages_eus
-
-# fast build rule for target.
-nodelet_generate_messages_eus/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/nodelet_generate_messages_eus.dir/build.make picky_arm_demo/CMakeFiles/nodelet_generate_messages_eus.dir/build
-.PHONY : nodelet_generate_messages_eus/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-pcl_msgs_generate_messages_nodejs: picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : pcl_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-pcl_msgs_generate_messages_nodejs/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/build.make picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/build
-.PHONY : pcl_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/bond_generate_messages_nodejs.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/bond_generate_messages_nodejs.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/bond_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_nodejs: picky_arm_demo/CMakeFiles/bond_generate_messages_nodejs.dir/rule
-
-.PHONY : bond_generate_messages_nodejs
-
-# fast build rule for target.
-bond_generate_messages_nodejs/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/bond_generate_messages_nodejs.dir/build.make picky_arm_demo/CMakeFiles/bond_generate_messages_nodejs.dir/build
-.PHONY : bond_generate_messages_nodejs/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/nodelet_generate_messages_nodejs.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/nodelet_generate_messages_nodejs.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/nodelet_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-nodelet_generate_messages_nodejs: picky_arm_demo/CMakeFiles/nodelet_generate_messages_nodejs.dir/rule
-
-.PHONY : nodelet_generate_messages_nodejs
-
-# fast build rule for target.
-nodelet_generate_messages_nodejs/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/nodelet_generate_messages_nodejs.dir/build.make picky_arm_demo/CMakeFiles/nodelet_generate_messages_nodejs.dir/build
-.PHONY : nodelet_generate_messages_nodejs/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/rule
-
-# Convenience name for target.
-topic_tools_generate_messages_py: picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/rule
-
-.PHONY : topic_tools_generate_messages_py
-
-# fast build rule for target.
-topic_tools_generate_messages_py/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/build.make picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/build
-.PHONY : topic_tools_generate_messages_py/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/rule
-
-# Convenience name for target.
-arm_motion_planning_collision_avoidance_realsense_moveit: picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/rule
-
-.PHONY : arm_motion_planning_collision_avoidance_realsense_moveit
-
-# fast build rule for target.
-arm_motion_planning_collision_avoidance_realsense_moveit/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/build.make picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/build
-.PHONY : arm_motion_planning_collision_avoidance_realsense_moveit/fast
+arm_motion_planning_collision_avoidance_moveit/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/build.make picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/build
+.PHONY : arm_motion_planning_collision_avoidance_moveit/fast
 
 # Convenience name for target.
 picky_arm_demo/CMakeFiles/arm_motion_planning_moveit.dir/rule:
@@ -318,139 +198,19 @@ arm_motion_planning_moveit/fast:
 .PHONY : arm_motion_planning_moveit/fast
 
 # Convenience name for target.
-picky_arm_demo/CMakeFiles/nodelet_generate_messages_cpp.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
+picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/rule
 
 # Convenience name for target.
-nodelet_generate_messages_cpp: picky_arm_demo/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
+topic_tools_generate_messages_py: picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/rule
 
-.PHONY : nodelet_generate_messages_cpp
+.PHONY : topic_tools_generate_messages_py
 
 # fast build rule for target.
-nodelet_generate_messages_cpp/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make picky_arm_demo/CMakeFiles/nodelet_generate_messages_cpp.dir/build
-.PHONY : nodelet_generate_messages_cpp/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/bond_generate_messages_cpp.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/bond_generate_messages_cpp.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/bond_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_cpp: picky_arm_demo/CMakeFiles/bond_generate_messages_cpp.dir/rule
-
-.PHONY : bond_generate_messages_cpp
-
-# fast build rule for target.
-bond_generate_messages_cpp/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/bond_generate_messages_cpp.dir/build.make picky_arm_demo/CMakeFiles/bond_generate_messages_cpp.dir/build
-.PHONY : bond_generate_messages_cpp/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/bond_generate_messages_eus.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/bond_generate_messages_eus.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/bond_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_eus: picky_arm_demo/CMakeFiles/bond_generate_messages_eus.dir/rule
-
-.PHONY : bond_generate_messages_eus
-
-# fast build rule for target.
-bond_generate_messages_eus/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/bond_generate_messages_eus.dir/build.make picky_arm_demo/CMakeFiles/bond_generate_messages_eus.dir/build
-.PHONY : bond_generate_messages_eus/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/arm_control.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/arm_control.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/arm_control.dir/rule
-
-# Convenience name for target.
-arm_control: picky_arm_demo/CMakeFiles/arm_control.dir/rule
-
-.PHONY : arm_control
-
-# fast build rule for target.
-arm_control/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/arm_control.dir/build.make picky_arm_demo/CMakeFiles/arm_control.dir/build
-.PHONY : arm_control/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/rule
-
-# Convenience name for target.
-arm_motion_planning_collision_avoidance_realsense_clicked_moveit: picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/rule
-
-.PHONY : arm_motion_planning_collision_avoidance_realsense_clicked_moveit
-
-# fast build rule for target.
-arm_motion_planning_collision_avoidance_realsense_clicked_moveit/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/build.make picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/build
-.PHONY : arm_motion_planning_collision_avoidance_realsense_clicked_moveit/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/rule
-
-# Convenience name for target.
-pcl_ros_gencfg: picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/rule
-
-.PHONY : pcl_ros_gencfg
-
-# fast build rule for target.
-pcl_ros_gencfg/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/build.make picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/build
-.PHONY : pcl_ros_gencfg/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-topic_tools_generate_messages_lisp: picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
-
-.PHONY : topic_tools_generate_messages_lisp
-
-# fast build rule for target.
-topic_tools_generate_messages_lisp/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/build
-.PHONY : topic_tools_generate_messages_lisp/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
-
-# Convenience name for target.
-moveit_ros_manipulation_gencfg: picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
-
-.PHONY : moveit_ros_manipulation_gencfg
-
-# fast build rule for target.
-moveit_ros_manipulation_gencfg/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build.make picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build
-.PHONY : moveit_ros_manipulation_gencfg/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/nodelet_generate_messages_lisp.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-nodelet_generate_messages_lisp: picky_arm_demo/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
-
-.PHONY : nodelet_generate_messages_lisp
-
-# fast build rule for target.
-nodelet_generate_messages_lisp/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make picky_arm_demo/CMakeFiles/nodelet_generate_messages_lisp.dir/build
-.PHONY : nodelet_generate_messages_lisp/fast
+topic_tools_generate_messages_py/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/build.make picky_arm_demo/CMakeFiles/topic_tools_generate_messages_py.dir/build
+.PHONY : topic_tools_generate_messages_py/fast
 
 # Convenience name for target.
 picky_arm_demo/CMakeFiles/moveit_ros_planning_gencfg.dir/rule:
@@ -468,6 +228,96 @@ moveit_ros_planning_gencfg/fast:
 .PHONY : moveit_ros_planning_gencfg/fast
 
 # Convenience name for target.
+picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
+
+# Convenience name for target.
+moveit_ros_manipulation_gencfg: picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/rule
+
+.PHONY : moveit_ros_manipulation_gencfg
+
+# fast build rule for target.
+moveit_ros_manipulation_gencfg/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build.make picky_arm_demo/CMakeFiles/moveit_ros_manipulation_gencfg.dir/build
+.PHONY : moveit_ros_manipulation_gencfg/fast
+
+# Convenience name for target.
+picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/rule
+
+# Convenience name for target.
+pcl_ros_gencfg: picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/rule
+
+.PHONY : pcl_ros_gencfg
+
+# fast build rule for target.
+pcl_ros_gencfg/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/build.make picky_arm_demo/CMakeFiles/pcl_ros_gencfg.dir/build
+.PHONY : pcl_ros_gencfg/fast
+
+# Convenience name for target.
+picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+pcl_msgs_generate_messages_lisp: picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : pcl_msgs_generate_messages_lisp
+
+# fast build rule for target.
+pcl_msgs_generate_messages_lisp/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build.make picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build
+.PHONY : pcl_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+pcl_msgs_generate_messages_py: picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
+
+.PHONY : pcl_msgs_generate_messages_py
+
+# fast build rule for target.
+pcl_msgs_generate_messages_py/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/build.make picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/build
+.PHONY : pcl_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/rule
+
+# Convenience name for target.
+arm_motion_planning_collision_avoidance_realsense_clicked_moveit: picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/rule
+
+.PHONY : arm_motion_planning_collision_avoidance_realsense_clicked_moveit
+
+# fast build rule for target.
+arm_motion_planning_collision_avoidance_realsense_clicked_moveit/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/build.make picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.dir/build
+.PHONY : arm_motion_planning_collision_avoidance_realsense_clicked_moveit/fast
+
+# Convenience name for target.
+picky_arm_demo/CMakeFiles/arm_control.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/arm_control.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/arm_control.dir/rule
+
+# Convenience name for target.
+arm_control: picky_arm_demo/CMakeFiles/arm_control.dir/rule
+
+.PHONY : arm_control
+
+# fast build rule for target.
+arm_control/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/arm_control.dir/build.make picky_arm_demo/CMakeFiles/arm_control.dir/build
+.PHONY : arm_control/fast
+
+# Convenience name for target.
 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/rule:
 	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/rule
 .PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/rule
@@ -481,6 +331,66 @@ pcl_msgs_generate_messages_cpp: picky_arm_demo/CMakeFiles/pcl_msgs_generate_mess
 pcl_msgs_generate_messages_cpp/fast:
 	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/build.make picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/build
 .PHONY : pcl_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+pcl_msgs_generate_messages_eus: picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule
+
+.PHONY : pcl_msgs_generate_messages_eus
+
+# fast build rule for target.
+pcl_msgs_generate_messages_eus/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/build.make picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/build
+.PHONY : pcl_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+topic_tools_generate_messages_nodejs: picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule
+
+.PHONY : topic_tools_generate_messages_nodejs
+
+# fast build rule for target.
+topic_tools_generate_messages_nodejs/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/build.make picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/build
+.PHONY : topic_tools_generate_messages_nodejs/fast
+
+# Convenience name for target.
+picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+pcl_msgs_generate_messages_nodejs: picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : pcl_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+pcl_msgs_generate_messages_nodejs/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/build.make picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_nodejs.dir/build
+.PHONY : pcl_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+topic_tools_generate_messages_cpp: picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+
+.PHONY : topic_tools_generate_messages_cpp
+
+# fast build rule for target.
+topic_tools_generate_messages_cpp/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/build
+.PHONY : topic_tools_generate_messages_cpp/fast
 
 # Convenience name for target.
 picky_arm_demo/CMakeFiles/nodelet_topic_tools_gencfg.dir/rule:
@@ -513,94 +423,34 @@ topic_tools_generate_messages_eus/fast:
 .PHONY : topic_tools_generate_messages_eus/fast
 
 # Convenience name for target.
-picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/rule
 
 # Convenience name for target.
-topic_tools_generate_messages_cpp: picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+arm_motion_planning_collision_avoidance_realsense_moveit: picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/rule
 
-.PHONY : topic_tools_generate_messages_cpp
+.PHONY : arm_motion_planning_collision_avoidance_realsense_moveit
 
 # fast build rule for target.
-topic_tools_generate_messages_cpp/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make picky_arm_demo/CMakeFiles/topic_tools_generate_messages_cpp.dir/build
-.PHONY : topic_tools_generate_messages_cpp/fast
+arm_motion_planning_collision_avoidance_realsense_moveit/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/build.make picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_moveit.dir/build
+.PHONY : arm_motion_planning_collision_avoidance_realsense_moveit/fast
 
 # Convenience name for target.
-picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule
+picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
+.PHONY : picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-pcl_msgs_generate_messages_eus: picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/rule
+topic_tools_generate_messages_lisp: picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
 
-.PHONY : pcl_msgs_generate_messages_eus
+.PHONY : topic_tools_generate_messages_lisp
 
 # fast build rule for target.
-pcl_msgs_generate_messages_eus/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/build.make picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_eus.dir/build
-.PHONY : pcl_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-pcl_msgs_generate_messages_py: picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/rule
-
-.PHONY : pcl_msgs_generate_messages_py
-
-# fast build rule for target.
-pcl_msgs_generate_messages_py/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/build.make picky_arm_demo/CMakeFiles/pcl_msgs_generate_messages_py.dir/build
-.PHONY : pcl_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-topic_tools_generate_messages_nodejs: picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule
-
-.PHONY : topic_tools_generate_messages_nodejs
-
-# fast build rule for target.
-topic_tools_generate_messages_nodejs/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/build.make picky_arm_demo/CMakeFiles/topic_tools_generate_messages_nodejs.dir/build
-.PHONY : topic_tools_generate_messages_nodejs/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/bond_generate_messages_py.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/bond_generate_messages_py.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/bond_generate_messages_py.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_py: picky_arm_demo/CMakeFiles/bond_generate_messages_py.dir/rule
-
-.PHONY : bond_generate_messages_py
-
-# fast build rule for target.
-bond_generate_messages_py/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/bond_generate_messages_py.dir/build.make picky_arm_demo/CMakeFiles/bond_generate_messages_py.dir/build
-.PHONY : bond_generate_messages_py/fast
-
-# Convenience name for target.
-picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/rule:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/rule
-.PHONY : picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/rule
-
-# Convenience name for target.
-arm_motion_planning_collision_avoidance_moveit: picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/rule
-
-.PHONY : arm_motion_planning_collision_avoidance_moveit
-
-# fast build rule for target.
-arm_motion_planning_collision_avoidance_moveit/fast:
-	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/build.make picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir/build
-.PHONY : arm_motion_planning_collision_avoidance_moveit/fast
+topic_tools_generate_messages_lisp/fast:
+	cd /home/orin/Orin/catkin_ws/build && $(MAKE) -f picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/build
+.PHONY : topic_tools_generate_messages_lisp/fast
 
 src/arm_control.o: src/arm_control.cpp.o
 
@@ -744,41 +594,31 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install"
-	@echo "... list_install_components"
-	@echo "... nodelet_generate_messages_py"
-	@echo "... bond_generate_messages_lisp"
-	@echo "... pcl_msgs_generate_messages_lisp"
-	@echo "... nodelet_generate_messages_eus"
-	@echo "... pcl_msgs_generate_messages_nodejs"
-	@echo "... bond_generate_messages_nodejs"
-	@echo "... nodelet_generate_messages_nodejs"
-	@echo "... topic_tools_generate_messages_py"
-	@echo "... arm_motion_planning_collision_avoidance_realsense_moveit"
-	@echo "... arm_motion_planning_moveit"
-	@echo "... nodelet_generate_messages_cpp"
-	@echo "... bond_generate_messages_cpp"
-	@echo "... bond_generate_messages_eus"
-	@echo "... test"
-	@echo "... arm_control"
-	@echo "... arm_motion_planning_collision_avoidance_realsense_clicked_moveit"
 	@echo "... install/local"
-	@echo "... pcl_ros_gencfg"
-	@echo "... topic_tools_generate_messages_lisp"
-	@echo "... moveit_ros_manipulation_gencfg"
-	@echo "... nodelet_generate_messages_lisp"
-	@echo "... moveit_ros_planning_gencfg"
-	@echo "... pcl_msgs_generate_messages_cpp"
-	@echo "... nodelet_topic_tools_gencfg"
-	@echo "... edit_cache"
-	@echo "... topic_tools_generate_messages_eus"
-	@echo "... topic_tools_generate_messages_cpp"
-	@echo "... pcl_msgs_generate_messages_eus"
-	@echo "... pcl_msgs_generate_messages_py"
-	@echo "... rebuild_cache"
-	@echo "... topic_tools_generate_messages_nodejs"
-	@echo "... bond_generate_messages_py"
+	@echo "... list_install_components"
+	@echo "... test"
 	@echo "... arm_motion_planning_collision_avoidance_moveit"
+	@echo "... rebuild_cache"
+	@echo "... edit_cache"
+	@echo "... arm_motion_planning_moveit"
+	@echo "... topic_tools_generate_messages_py"
+	@echo "... moveit_ros_planning_gencfg"
+	@echo "... moveit_ros_manipulation_gencfg"
+	@echo "... pcl_ros_gencfg"
+	@echo "... pcl_msgs_generate_messages_lisp"
+	@echo "... pcl_msgs_generate_messages_py"
+	@echo "... install"
+	@echo "... arm_motion_planning_collision_avoidance_realsense_clicked_moveit"
+	@echo "... arm_control"
+	@echo "... pcl_msgs_generate_messages_cpp"
+	@echo "... pcl_msgs_generate_messages_eus"
+	@echo "... topic_tools_generate_messages_nodejs"
+	@echo "... pcl_msgs_generate_messages_nodejs"
+	@echo "... topic_tools_generate_messages_cpp"
+	@echo "... nodelet_topic_tools_gencfg"
+	@echo "... topic_tools_generate_messages_eus"
+	@echo "... arm_motion_planning_collision_avoidance_realsense_moveit"
+	@echo "... topic_tools_generate_messages_lisp"
 	@echo "... src/arm_control.o"
 	@echo "... src/arm_control.i"
 	@echo "... src/arm_control.s"

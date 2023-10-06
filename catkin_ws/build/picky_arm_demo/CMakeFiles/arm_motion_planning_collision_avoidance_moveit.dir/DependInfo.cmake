@@ -10,6 +10,9 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
+  "BOOST_ALL_NO_LIB"
+  "BOOST_FILESYSTEM_DYN_LINK"
+  "BOOST_SYSTEM_DYN_LINK"
   "ROSCONSOLE_BACKEND_LOG4CXX"
   "ROS_BUILD_SHARED_LIBS=1"
   "ROS_PACKAGE_NAME=\"picky_arm_demo\""
@@ -17,6 +20,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/orin/Orin/catkin_ws/src/geometric_shapes/include"
+  "/home/orin/Orin/catkin_ws/src/srdfdom/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"
@@ -29,6 +34,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/orin/Orin/catkin_ws/build/srdfdom/CMakeFiles/srdfdom.dir/DependInfo.cmake"
+  "/home/orin/Orin/catkin_ws/build/geometric_shapes/CMakeFiles/geometric_shapes.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

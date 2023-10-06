@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/orin/Orin/catkin_ws/src/geometric_shapes/include/geometric_shapes/check_isometry.h
+algorithm
+-
+assert.h
+-
+iostream
+-
+math.h
+-
+Eigen/Core
+-
+Eigen/Geometry
+-
+
 /home/orin/Orin/catkin_ws/src/picky_arm_demo/src/arm_motion_planning_collision_avoidance_moveit.cpp
 ros/ros.h
 -
@@ -14,6 +28,22 @@ moveit/move_group_interface/move_group_interface.h
 moveit/planning_scene_interface/planning_scene_interface.h
 -
 std_srvs/Empty.h
+-
+
+/home/orin/Orin/catkin_ws/src/srdfdom/include/srdfdom/model.h
+map
+-
+string
+-
+vector
+-
+utility
+-
+urdf/model.h
+-
+memory
+-
+tinyxml2.h
 -
 
 /opt/ros/noetic/include/actionlib/action_definition.h
@@ -268,20 +298,6 @@ Eigen/Geometry
 Eigen/StdVector
 -
 vector
--
-
-/opt/ros/noetic/include/geometric_shapes/check_isometry.h
-algorithm
--
-assert.h
--
-iostream
--
-math.h
--
-Eigen/Core
--
-Eigen/Geometry
 -
 
 /opt/ros/noetic/include/geometry_msgs/Accel.h
@@ -2416,22 +2432,6 @@ ros/serialization.h
 ros/builtin_message_traits.h
 -
 ros/message_operations.h
--
-
-/opt/ros/noetic/include/srdfdom/model.h
-map
--
-string
--
-vector
--
-utility
--
-urdf/model.h
--
-memory
--
-tinyxml2.h
 -
 
 /opt/ros/noetic/include/std_msgs/ColorRGBA.h

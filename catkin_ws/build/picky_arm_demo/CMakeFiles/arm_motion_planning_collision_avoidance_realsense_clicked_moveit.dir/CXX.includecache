@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/orin/Orin/catkin_ws/src/geometric_shapes/include/geometric_shapes/check_isometry.h
+algorithm
+-
+assert.h
+-
+iostream
+-
+math.h
+-
+Eigen/Core
+-
+Eigen/Geometry
+-
+
 /home/orin/Orin/catkin_ws/src/picky_arm_demo/src/arm_motion_planning_collision_avoidance_realsense_clicked_moveit.cpp
 ros/ros.h
 -
@@ -48,6 +62,22 @@ tf/transform_datatypes.h
 tf/transform_listener.h
 -
 tf/transform_broadcaster.h
+-
+
+/home/orin/Orin/catkin_ws/src/srdfdom/include/srdfdom/model.h
+map
+-
+string
+-
+vector
+-
+utility
+-
+urdf/model.h
+-
+memory
+-
+tinyxml2.h
 -
 
 /opt/ros/noetic/include/actionlib/action_definition.h
@@ -320,20 +350,6 @@ Eigen/Geometry
 Eigen/StdVector
 -
 vector
--
-
-/opt/ros/noetic/include/geometric_shapes/check_isometry.h
-algorithm
--
-assert.h
--
-iostream
--
-math.h
--
-Eigen/Core
--
-Eigen/Geometry
 -
 
 /opt/ros/noetic/include/geometry_msgs/Accel.h
@@ -2850,22 +2866,6 @@ ros/serialization.h
 ros/builtin_message_traits.h
 -
 ros/message_operations.h
--
-
-/opt/ros/noetic/include/srdfdom/model.h
-map
--
-string
--
-vector
--
-utility
--
-urdf/model.h
--
-memory
--
-tinyxml2.h
 -
 
 /opt/ros/noetic/include/std_msgs/Bool.h

@@ -14,6 +14,15 @@
 # EXTERNAL cache entries
 ########################
 
+//Path to a library.
+ASSIMP_ABS_LIBRARIES:FILEPATH=/usr/lib/aarch64-linux-gnu/libassimp.so.5
+
+//The directory containing a CMake configuration file for ASSIMP.
+ASSIMP_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/assimp-5.0
+
+//the suffix for the assimp libraries
+ASSIMP_LIBRARY_SUFFIX:STRING=
+
 //Builds the googlemock subproject
 BUILD_GMOCK:BOOL=ON
 
@@ -22,6 +31,16 @@ BUILD_SHARED_LIBS:BOOL=ON
 
 //Use OpenMP
 BUILD_WITH_OPENMP:BOOL=OFF
+
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/Boost-1.71.0
+
+Boost_FILESYSTEM_LIBRARY_RELEASE:STRING=/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0
+
+//Path to a file.
+Boost_INCLUDE_DIR:PATH=/usr/include
+
+Boost_SYSTEM_LIBRARY_RELEASE:STRING=/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0
 
 //List of ';' separated packages to exclude
 CATKIN_BLACKLIST_PACKAGES:STRING=
@@ -309,6 +328,9 @@ EMPY_EXECUTABLE:FILEPATH=EMPY_EXECUTABLE-NOTFOUND
 //Empy script
 EMPY_SCRIPT:STRING=/usr/lib/python3/dist-packages/em.py
 
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=/usr/lib/cmake/eigen3
+
 //Path to a library.
 GMOCK_LIBRARY:FILEPATH=GMOCK_LIBRARY-NOTFOUND
 
@@ -346,6 +368,9 @@ GTest_DIR:PATH=GTest_DIR-NOTFOUND
 // may want to turn this OFF.)
 INSTALL_GTEST:BOOL=OFF
 
+//Path to a file.
+LIBFCL_INCLUDE_DIRS:PATH=/opt/ros/noetic/include
+
 //lsb_release executable was found
 LSB_FOUND:BOOL=TRUE
 
@@ -357,6 +382,9 @@ NOSETESTS:FILEPATH=/usr/bin/nosetests3
 
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/opencv4
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3
@@ -373,6 +401,15 @@ Project_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src
 
+//QHull include dir.
+QHULL_INCLUDE_DIR:PATH=/usr/include/libqhull_r
+
+//Path to a library.
+QHULL_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libqhull_r.so
+
+//Path to a library.
+QHULL_LIBRARY_DEBUG:FILEPATH=/usr/lib/aarch64-linux-gnu/libqhull_r.so
+
 //Path to a library.
 RT_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/librt.so
 
@@ -385,6 +422,12 @@ SET_USER_BREAK_AT_STARTUP:BOOL=OFF
 //Name of the computer/site where compile is being run
 SITE:STRING=orin
 
+//Path to a file.
+TinyXML2_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+TinyXML2_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libtinyxml2.so
+
 //LSB Distrib tag
 UBUNTU:BOOL=TRUE
 
@@ -392,7 +435,7 @@ UBUNTU:BOOL=TRUE
 UBUNTU_FOCAL:BOOL=TRUE
 
 //Path to a file.
-_file_name:FILEPATH=/home/orin/Orin/catkin_ws/src/ddynamic_reconfigure/test/ddynamic_reconfigure.test
+_file_name:FILEPATH=/home/orin/Orin/catkin_ws/src/srdfdom/test/srdf_parser_cpp.test
 
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/src/googletest/googlemock/include/gmock/gmock.h
@@ -405,6 +448,21 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
+
+//Path to a library.
+_lib_ccd:FILEPATH=/usr/lib/aarch64-linux-gnu/libccd.so
+
+//Path to a library.
+_lib_fcl:FILEPATH=/opt/ros/noetic/lib/aarch64-linux-gnu/libfcl.so
+
+//Path to a library.
+_lib_m:FILEPATH=/usr/lib/aarch64-linux-gnu/libm.so
+
+//Path to a library.
+_lib_octomap:FILEPATH=/opt/ros/noetic/lib/liboctomap.so
+
+//Path to a library.
+_lib_octomath:FILEPATH=/opt/ros/noetic/lib/liboctomath.so
 
 //Path to a file.
 _path_name:FILEPATH=/home/orin/Orin/catkin_ws/src/realsense-ros/realsense2_description/tests
@@ -421,11 +479,26 @@ bond_DIR:PATH=/opt/ros/noetic/share/bond/cmake
 //The directory containing a CMake configuration file for bondcpp.
 bondcpp_DIR:PATH=/opt/ros/noetic/share/bondcpp/cmake
 
+//The directory containing a CMake configuration file for boost_filesystem.
+boost_filesystem_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/boost_filesystem-1.71.0
+
+//The directory containing a CMake configuration file for boost_headers.
+boost_headers_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/boost_headers-1.71.0
+
+//The directory containing a CMake configuration file for boost_system.
+boost_system_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/boost_system-1.71.0
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/noetic/share/catkin/cmake
 
 //The directory containing a CMake configuration file for class_loader.
 class_loader_DIR:PATH=/opt/ros/noetic/share/class_loader/cmake
+
+//The directory containing a CMake configuration file for cmake_modules.
+cmake_modules_DIR:PATH=/opt/ros/noetic/share/cmake_modules/cmake
+
+//The directory containing a CMake configuration file for console_bridge.
+console_bridge_DIR:PATH=/usr/lib/aarch64-linux-gnu/console_bridge/cmake
 
 //The directory containing a CMake configuration file for controller_interface.
 controller_interface_DIR:PATH=/opt/ros/noetic/share/controller_interface/cmake
@@ -490,8 +563,17 @@ gennodejs_DIR:PATH=/opt/ros/noetic/share/gennodejs/cmake
 //The directory containing a CMake configuration file for genpy.
 genpy_DIR:PATH=/opt/ros/noetic/share/genpy/cmake
 
+//Value Computed by CMake
+geometric_shapes_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/geometric_shapes
+
 //The directory containing a CMake configuration file for geometric_shapes.
-geometric_shapes_DIR:PATH=/opt/ros/noetic/share/geometric_shapes/cmake
+geometric_shapes_DIR:PATH=/home/orin/Orin/catkin_ws/devel/share/geometric_shapes/cmake
+
+//Dependencies for the target
+geometric_shapes_LIB_DEPENDS:STATIC=general;/usr/lib/aarch64-linux-gnu/libassimp.so.5;optimized;/usr/lib/aarch64-linux-gnu/libqhull_r.so;debug;/usr/lib/aarch64-linux-gnu/libqhull_r.so;general;/opt/ros/noetic/lib/librandom_numbers.so;general;/opt/ros/noetic/lib/libresource_retriever.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;general;console_bridge::console_bridge;general;Boost::system;general;Boost::filesystem;general;/opt/ros/noetic/lib/aarch64-linux-gnu/libfcl.so;general;/usr/lib/aarch64-linux-gnu/libccd.so;general;/usr/lib/aarch64-linux-gnu/libm.so;general;/opt/ros/noetic/lib/liboctomap.so;general;/opt/ros/noetic/lib/liboctomath.so;
+
+//Value Computed by CMake
+geometric_shapes_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/geometric_shapes
 
 //The directory containing a CMake configuration file for geometry_msgs.
 geometry_msgs_DIR:PATH=/opt/ros/noetic/share/geometry_msgs/cmake
@@ -552,7 +634,7 @@ image_transport_DIR:PATH=/opt/ros/noetic/share/image_transport/cmake
 kdl_parser_DIR:PATH=/opt/ros/noetic/share/kdl_parser/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/noetic/lib/libdiagnostic_updater.so
+lib:FILEPATH=/opt/ros/noetic/lib/libcv_bridge.so
 
 //Value Computed by CMake
 mecharm_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/mycobot_ros/mecharm/mecharm
@@ -896,6 +978,9 @@ nodelet_topic_tools_DIR:PATH=/opt/ros/noetic/share/nodelet_topic_tools/cmake
 //The directory containing a CMake configuration file for object_recognition_msgs.
 object_recognition_msgs_DIR:PATH=/opt/ros/noetic/share/object_recognition_msgs/cmake
 
+//The directory containing a CMake configuration file for octomap.
+octomap_DIR:PATH=/opt/ros/noetic/share/octomap
+
 //The directory containing a CMake configuration file for octomap_msgs.
 octomap_msgs_DIR:PATH=/opt/ros/noetic/share/octomap_msgs/cmake
 
@@ -914,6 +999,21 @@ picky_arm_demo_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/picky_arm_demo
 //Value Computed by CMake
 picky_arm_demo_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/picky_arm_demo
 
+//Path to a library.
+pkgcfg_lib_LIBFCL_PC_ccd:FILEPATH=/usr/lib/aarch64-linux-gnu/libccd.so
+
+//Path to a library.
+pkgcfg_lib_LIBFCL_PC_fcl:FILEPATH=/opt/ros/noetic/lib/aarch64-linux-gnu/libfcl.so
+
+//Path to a library.
+pkgcfg_lib_LIBFCL_PC_m:FILEPATH=/usr/lib/aarch64-linux-gnu/libm.so
+
+//Path to a library.
+pkgcfg_lib_LIBFCL_PC_octomap:FILEPATH=/opt/ros/noetic/lib/liboctomap.so
+
+//Path to a library.
+pkgcfg_lib_LIBFCL_PC_octomath:FILEPATH=/opt/ros/noetic/lib/liboctomath.so
+
 //The directory containing a CMake configuration file for pluginlib.
 pluginlib_DIR:PATH=/opt/ros/noetic/share/pluginlib/cmake
 
@@ -921,10 +1021,13 @@ pluginlib_DIR:PATH=/opt/ros/noetic/share/pluginlib/cmake
 random_numbers_DIR:PATH=/opt/ros/noetic/share/random_numbers/cmake
 
 //The directory containing a CMake configuration file for realsense2.
-realsense2_DIR:PATH=realsense2_DIR-NOTFOUND
+realsense2_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/realsense2
 
 //Value Computed by CMake
 realsense2_camera_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/realsense-ros/realsense2_camera
+
+//Dependencies for the target
+realsense2_camera_LIB_DEPENDS:STATIC=general;realsense2::realsense2;general;/opt/ros/noetic/lib/libnodeletlib.so;general;/opt/ros/noetic/lib/libbondcpp.so;general;/usr/lib/aarch64-linux-gnu/libuuid.so;general;/opt/ros/noetic/lib/libcv_bridge.so;general;/usr/lib/aarch64-linux-gnu/libopencv_calib3d.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_dnn.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_features2d.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_flann.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_highgui.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_ml.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_objdetect.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_photo.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_stitching.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_video.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_videoio.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_aruco.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_bgsegm.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_bioinspired.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_ccalib.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_datasets.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_dnn_objdetect.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_dnn_superres.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_dpm.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_face.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_freetype.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_fuzzy.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_hdf.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_hfs.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_img_hash.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_line_descriptor.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_optflow.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_phase_unwrapping.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_plot.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_quality.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_reg.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_rgbd.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_saliency.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_shape.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_stereo.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_structured_light.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_superres.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_surface_matching.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_text.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_tracking.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_videostab.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_viz.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_ximgproc.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_xobjdetect.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_xphoto.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_core.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_imgproc.so.4.2.0;general;/usr/lib/aarch64-linux-gnu/libopencv_imgcodecs.so.4.2.0;general;/opt/ros/noetic/lib/libimage_transport.so;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/opt/ros/noetic/lib/libtf.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libtf2.so;general;ddynamic_reconfigure;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/libdiagnostic_updater.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;general;-lpthread;general;opencv_calib3d;general;opencv_core;general;opencv_dnn;general;opencv_features2d;general;opencv_flann;general;opencv_gapi;general;opencv_highgui;general;opencv_imgcodecs;general;opencv_imgproc;general;opencv_ml;general;opencv_objdetect;general;opencv_photo;general;opencv_stitching;general;opencv_video;general;opencv_videoio;
 
 //Value Computed by CMake
 realsense2_camera_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/realsense-ros/realsense2_camera
@@ -934,6 +1037,9 @@ realsense2_description_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/realsen
 
 //Value Computed by CMake
 realsense2_description_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/realsense-ros/realsense2_description
+
+//The directory containing a CMake configuration file for resource_retriever.
+resource_retriever_DIR:PATH=/opt/ros/noetic/share/resource_retriever/cmake
 
 //Value Computed by CMake
 rgbd_launch_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/rgbd_launch
@@ -998,8 +1104,17 @@ shape_msgs_DIR:PATH=/opt/ros/noetic/share/shape_msgs/cmake
 //The directory containing a CMake configuration file for smclib.
 smclib_DIR:PATH=/opt/ros/noetic/share/smclib/cmake
 
+//Value Computed by CMake
+srdfdom_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/srdfdom
+
 //The directory containing a CMake configuration file for srdfdom.
-srdfdom_DIR:PATH=/opt/ros/noetic/share/srdfdom/cmake
+srdfdom_DIR:PATH=/home/orin/Orin/catkin_ws/devel/share/srdfdom/cmake
+
+//Dependencies for the target
+srdfdom_LIB_DEPENDS:STATIC=general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/opt/ros/noetic/lib/liburdf.so;general;/usr/lib/aarch64-linux-gnu/liburdfdom_sensor.so;general;/usr/lib/aarch64-linux-gnu/liburdfdom_model_state.so;general;/usr/lib/aarch64-linux-gnu/liburdfdom_model.so;general;/usr/lib/aarch64-linux-gnu/liburdfdom_world.so;general;/usr/lib/aarch64-linux-gnu/libtinyxml.so;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/opt/ros/noetic/lib/librosconsole_bridge.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;general;console_bridge::console_bridge;
+
+//Value Computed by CMake
+srdfdom_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/srdfdom
 
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/noetic/share/std_msgs/cmake
@@ -1055,6 +1170,9 @@ ultraarm_moveit_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/mycobot_ros/ultr
 //The directory containing a CMake configuration file for urdf.
 urdf_DIR:PATH=/opt/ros/noetic/share/urdf/cmake
 
+//The directory containing a CMake configuration file for urdfdom_headers.
+urdfdom_headers_DIR:PATH=/usr/lib/aarch64-linux-gnu/urdfdom_headers/cmake
+
 //The directory containing a CMake configuration file for visualization_msgs.
 visualization_msgs_DIR:PATH=/opt/ros/noetic/share/visualization_msgs/cmake
 
@@ -1069,6 +1187,10 @@ xmlrpcpp_DIR:PATH=/opt/ros/noetic/share/xmlrpcpp/cmake
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: ASSIMP_LIBRARY_SUFFIX
+ASSIMP_LIBRARY_SUFFIX-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_DIR
+Boost_DIR-ADVANCED:INTERNAL=1
 //catkin environment
 CATKIN_ENV:INTERNAL=/home/orin/Orin/catkin_ws/build/catkin_generated/env_cached.sh
 CATKIN_TEST_RESULTS_DIR:INTERNAL=/home/orin/Orin/catkin_ws/build/test_results
@@ -1212,7 +1334,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=51
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=63
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -1255,14 +1377,22 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding Boost
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/aarch64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake][c ][v1.71.0()]
 //Details about finding OpenCV
-FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][v4.5.4()]
+FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][v4.5.4(4)]
 //Details about finding PY_em
 FIND_PACKAGE_MESSAGE_DETAILS_PY_em:INTERNAL=[/usr/lib/python3/dist-packages/em.py][v()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.1()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3][v3.8.10()]
+//Details about finding QHULL
+FIND_PACKAGE_MESSAGE_DETAILS_QHULL:INTERNAL=[/usr/lib/aarch64-linux-gnu/libqhull_r.so][/usr/include/libqhull_r][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding TinyXML2
+FIND_PACKAGE_MESSAGE_DETAILS_TinyXML2:INTERNAL=[/usr/lib/aarch64-linux-gnu/libtinyxml2.so][/usr/include][v()]
 GMOCK_FROM_SOURCE_FOUND:INTERNAL=TRUE
 GMOCK_FROM_SOURCE_INCLUDE_DIRS:INTERNAL=/usr/src/googletest/googlemock/include
 GMOCK_FROM_SOURCE_LIBRARIES:INTERNAL=gmock
@@ -1291,14 +1421,71 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+LIBFCL_PC_CFLAGS:INTERNAL=-std=c++11;-I/opt/ros/noetic/include;-I/usr/include/eigen3
+LIBFCL_PC_CFLAGS_I:INTERNAL=
+LIBFCL_PC_CFLAGS_OTHER:INTERNAL=-std=c++11
+LIBFCL_PC_FOUND:INTERNAL=1
+LIBFCL_PC_INCLUDEDIR:INTERNAL=/opt/ros/noetic/include
+LIBFCL_PC_INCLUDE_DIRS:INTERNAL=/opt/ros/noetic/include;/usr/include/eigen3
+LIBFCL_PC_LDFLAGS:INTERNAL=-L/opt/ros/noetic/lib;-L/opt/ros/noetic/lib/aarch64-linux-gnu;-lfcl;-lccd;-lm;-loctomap;-loctomath
+LIBFCL_PC_LDFLAGS_OTHER:INTERNAL=
+LIBFCL_PC_LIBDIR:INTERNAL=/opt/ros/noetic/lib/aarch64-linux-gnu
+LIBFCL_PC_LIBRARIES:INTERNAL=fcl;ccd;m;octomap;octomath
+LIBFCL_PC_LIBRARY_DIRS:INTERNAL=/opt/ros/noetic/lib;/opt/ros/noetic/lib/aarch64-linux-gnu
+LIBFCL_PC_LIBS:INTERNAL=
+LIBFCL_PC_LIBS_L:INTERNAL=
+LIBFCL_PC_LIBS_OTHER:INTERNAL=
+LIBFCL_PC_LIBS_PATHS:INTERNAL=
+LIBFCL_PC_MODULE_NAME:INTERNAL=fcl
+LIBFCL_PC_PREFIX:INTERNAL=/opt/ros/noetic
+LIBFCL_PC_STATIC_CFLAGS:INTERNAL=-std=c++11;-I/opt/ros/noetic/include;-I/usr/include/eigen3
+LIBFCL_PC_STATIC_CFLAGS_I:INTERNAL=
+LIBFCL_PC_STATIC_CFLAGS_OTHER:INTERNAL=-std=c++11
+LIBFCL_PC_STATIC_INCLUDE_DIRS:INTERNAL=/opt/ros/noetic/include;/usr/include/eigen3
+LIBFCL_PC_STATIC_LDFLAGS:INTERNAL=-L/opt/ros/noetic/lib;-L/opt/ros/noetic/lib/aarch64-linux-gnu;-lfcl;-lccd;-lm;-loctomap;-loctomath
+LIBFCL_PC_STATIC_LDFLAGS_OTHER:INTERNAL=
+LIBFCL_PC_STATIC_LIBDIR:INTERNAL=
+LIBFCL_PC_STATIC_LIBRARIES:INTERNAL=fcl;ccd;m;octomap;octomath
+LIBFCL_PC_STATIC_LIBRARY_DIRS:INTERNAL=/opt/ros/noetic/lib;/opt/ros/noetic/lib/aarch64-linux-gnu
+LIBFCL_PC_STATIC_LIBS:INTERNAL=
+LIBFCL_PC_STATIC_LIBS_L:INTERNAL=
+LIBFCL_PC_STATIC_LIBS_OTHER:INTERNAL=
+LIBFCL_PC_STATIC_LIBS_PATHS:INTERNAL=
+LIBFCL_PC_VERSION:INTERNAL=0.6.1
+LIBFCL_PC_fcl_INCLUDEDIR:INTERNAL=
+LIBFCL_PC_fcl_LIBDIR:INTERNAL=
+LIBFCL_PC_fcl_PREFIX:INTERNAL=
+LIBFCL_PC_fcl_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python3/dist-packages
+//QHull header
+QHULL_HEADER:INTERNAL=/usr/include/libqhull_r/libqhull_r.h
+//ADVANCED property for variable: QHULL_INCLUDE_DIR
+QHULL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: QHULL_LIBRARY
+QHULL_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: QHULL_LIBRARY_DEBUG
+QHULL_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TinyXML2_INCLUDE_DIR
+TinyXML2_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TinyXML2_LIBRARY
+TinyXML2_LIBRARY-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/home/orin/Orin/catkin_ws/install
+__pkg_config_arguments_LIBFCL_PC:INTERNAL=REQUIRED;fcl
+__pkg_config_checked_LIBFCL_PC:INTERNAL=1
+//ADVANCED property for variable: boost_filesystem_DIR
+boost_filesystem_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_headers_DIR
+boost_headers_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_system_DIR
+boost_system_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: gmock_build_tests
 gmock_build_tests-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: gtest_build_samples
@@ -1311,4 +1498,15 @@ gtest_disable_pthreads-ADVANCED:INTERNAL=1
 gtest_force_shared_crt-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: gtest_hide_internal_symbols
 gtest_hide_internal_symbols-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_LIBFCL_PC_ccd
+pkgcfg_lib_LIBFCL_PC_ccd-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_LIBFCL_PC_fcl
+pkgcfg_lib_LIBFCL_PC_fcl-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_LIBFCL_PC_m
+pkgcfg_lib_LIBFCL_PC_m-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_LIBFCL_PC_octomap
+pkgcfg_lib_LIBFCL_PC_octomap-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_LIBFCL_PC_octomath
+pkgcfg_lib_LIBFCL_PC_octomath-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/opt/ros/noetic/lib/aarch64-linux-gnu
 
