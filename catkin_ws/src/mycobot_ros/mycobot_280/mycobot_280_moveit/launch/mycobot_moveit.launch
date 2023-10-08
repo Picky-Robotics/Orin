@@ -52,12 +52,12 @@
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
   <!-- 运行 Rviz 并加载默认配置以查看 move_group 节点的状态 -->
-  <!--
+  
   <include file="$(find mycobot_280_moveit)/launch/moveit_rviz.launch">
     <arg name="config" value="true"/>
     <arg name="debug" value="$(arg debug)"/>
   </include>
-  -->
+  
   
   
   

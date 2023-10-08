@@ -27,6 +27,23 @@
       <origin xyz = "0.0 0.0 0.0" rpy = "0 0 0"/>
   </link>
 
+
+  <link name="stand_link">
+    <visual>
+      <origin xyz = "0.0 0.0 0.0" rpy = "0.0 0.0 0.0"/>
+      <geometry>
+	      <mesh filename="package://mycobot_description/urdf/mycobot/stand.dae"/> <!-- <box size="0.025 0.025 0.025"/> -->
+      </geometry>
+    </visual>
+    <collision>
+        <origin xyz = "0.0 0.0 0.0" rpy = "0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://mycobot_description/urdf/mycobot/stand.dae"/>  <!-- <box size="0.025 0.025 0.025"/> -->
+        </geometry>
+    </collision>    
+  </link>
+
+
   <link name="joint1">
     <visual>
       <geometry>
@@ -149,10 +166,16 @@
 
 
   <!--  ************************************** -->
+  <joint name="stand_link_to_base_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="stand_link"/>
+    <origin xyz = "-0.05 0.1 -0.07" rpy = "1.5708 0.0 -1.5708"/>
+  </joint>
+
   <joint name="camera_link_to_base_link" type="fixed">
     <parent link="base_link"/>
     <child link="camera_link"/>
-    <origin xyz = "-0.3 0.0 0.5" rpy = "2.0944 0.0 1.5708"/>
+    <origin xyz = "-0.275 0.0 0.5" rpy = "2.0944 0.0 1.5708"/>
   </joint>
 
   <joint name="camera_depth_frame_to_camera_link" type="fixed">
