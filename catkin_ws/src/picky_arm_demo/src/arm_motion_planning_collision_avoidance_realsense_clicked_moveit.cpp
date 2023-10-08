@@ -19,10 +19,14 @@
 #include <tf/transform_datatypes.h>
 #include <tf/transform_listener.h>
 #include <tf/transform_broadcaster.h>
+#include <moveit_msgs/ExecuteTrajectoryAction.h>
 
 // Global variables for storing camera parameters
 sensor_msgs::CameraInfo camera_info;
 bool camera_info_received = false;
+bool octomap_clear = false;
+// bool trajectoryExecuted = false;
+// bool dropOff = false;
 geometry_msgs::Point clickedPixel;
 geometry_msgs::Point clickedPosition;
 std_msgs::Bool triggerArm;
@@ -64,6 +68,21 @@ geometry_msgs::Pose get_pose(const tf::Transform &tf_transform)
 
     return pose;
 }
+
+// void executeTrajectoryCallback(const moveit_msgs::ExecuteTrajectoryFeedbackConstPtr &feedback)
+// {
+
+//     if (feedback->state == moveit_msgs::ExecuteTrajectoryFeedback::MONITOR)
+//     {
+//         ROS_INFO("Trajectory is still executing...");
+//     }
+//     else if (!(feedback->state == moveit_msgs::ExecuteTrajectoryFeedback::IDLE))
+//     {
+//         ROS_INFO("Trajectory Execution Completed.");
+//         trajectoryExecuted = true;
+//         // Now you can proceed with another task.
+//     }
+// }
 
 // Callback for the camera info message
 void cameraInfoCallback(const sensor_msgs::CameraInfo::ConstPtr &msg)
@@ -221,6 +240,9 @@ int main(int argc, char **argv)
     // Create a publisher for arm trigger
     trigger_arm_pub = nh.advertise<std_msgs::Bool>("/trigger_arm", 1);
 
+    // Create a subscriber to monitor trajectory execution feedback
+    // ros::Subscriber feedback_sub = nh.subscribe("/execute_trajectory/feedback", 10, executeTrajectoryCallback);
+
     // --- Move Arm to Position ---
     // Set up MoveIt! interfaces
     moveit::planning_interface::MoveGroupInterface arm_group("arm_group");
@@ -235,7 +257,9 @@ int main(int argc, char **argv)
 
     while (ros::ok())
     {
-        bool octomap_clear = false;
+        octomap_clear = false;
+        // trajectoryExecuted = false;
+        // dropOff = false;
 
         if (triggerArm.data)
         {
@@ -257,10 +281,10 @@ int main(int argc, char **argv)
 
             // Set a target pose
             geometry_msgs::Pose target_pose;
-            target_pose.orientation.x = -0.8509035;
+            target_pose.orientation.x = 0.0; // -0.8509035
             target_pose.orientation.y = 0.0;
             target_pose.orientation.z = 0.0;
-            target_pose.orientation.w = 0.525322;
+            target_pose.orientation.w = 1.0; // 0.525322
             target_pose.position.x = clickedPosition.x;
             target_pose.position.y = clickedPosition.y;
             target_pose.position.z = clickedPosition.z;
@@ -268,23 +292,38 @@ int main(int argc, char **argv)
 
             ROS_INFO("MoveIt! is planning to (%f, %f, %f)m in Robot Frame", clickedPosition.x, clickedPosition.y, clickedPosition.z);
 
-            // Plan
+            // Planing trajectory.
             ROS_INFO("Planning started ..!");
             moveit::planning_interface::MoveGroupInterface::Plan my_plan;
             bool success = arm_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
-            ROS_INFO("Planning finished.");
+            ROS_INFO("*** Planning finished ***");
 
             if (success)
             {
-                ROS_INFO("Planning succeeded. Now robot executes the trajectory ...");
+                ROS_INFO("Planning succeeded. Now robot executes the trajectory!");
                 // Execute trajectory.
                 arm_group.execute(my_plan);
-                ROS_INFO("Trajectory Execution Completed.");
+                // while (!trajectoryExecuted)
+                // {
+                //     ros::Duration(0.1).sleep(); // Sleep for a short duration to avoid busy-waiting
+                //     ROS_INFO("Trajectory is being executed ...");
+                // }
+                // if (trajectoryExecuted)
+                // {
+                //     dropOff = true;
+                //     ROS_INFO("*** Trajectory Execution Completed ***");
+                // }
             }
             else
             {
                 ROS_WARN("Planning Failed! Check if the target pose is reachable and that there are no collisions.");
             }
+
+            // // Drop off item into bin.
+            // if (dropOff)
+            // {
+            //     ROS_INFO("*** Robot Going to DropOff ***");
+            // }
         }
     }
     return 0;

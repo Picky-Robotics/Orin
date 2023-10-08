@@ -74,6 +74,13 @@ picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_realsense_clic
  /opt/ros/noetic/include/moveit_msgs/CartesianTrajectoryPoint.h
  /opt/ros/noetic/include/moveit_msgs/CollisionObject.h
  /opt/ros/noetic/include/moveit_msgs/Constraints.h
+ /opt/ros/noetic/include/moveit_msgs/ExecuteTrajectoryAction.h
+ /opt/ros/noetic/include/moveit_msgs/ExecuteTrajectoryActionFeedback.h
+ /opt/ros/noetic/include/moveit_msgs/ExecuteTrajectoryActionGoal.h
+ /opt/ros/noetic/include/moveit_msgs/ExecuteTrajectoryActionResult.h
+ /opt/ros/noetic/include/moveit_msgs/ExecuteTrajectoryFeedback.h
+ /opt/ros/noetic/include/moveit_msgs/ExecuteTrajectoryGoal.h
+ /opt/ros/noetic/include/moveit_msgs/ExecuteTrajectoryResult.h
  /opt/ros/noetic/include/moveit_msgs/GenericTrajectory.h
  /opt/ros/noetic/include/moveit_msgs/Grasp.h
  /opt/ros/noetic/include/moveit_msgs/GripperTranslation.h
