@@ -127,12 +127,13 @@ void depthImageCallback(const sensor_msgs::Image::ConstPtr &depth_image_msg)
     tf::Transform tf_point_in_camera = get_tf(pose_point_in_camera);
 
     // Initialize pose_robot_in_camera
+    // Camera depth frame -> Base frame: [-0.3, 0.0, 0.5, 120.0, 0.0, 90.0]
     geometry_msgs::Pose pose_robot_in_camera;
-    pose_robot_in_camera.position.x = 0.1;
-    pose_robot_in_camera.position.y = 0.05;
-    pose_robot_in_camera.position.z = -0.05;
+    pose_robot_in_camera.position.x = -0.3;
+    pose_robot_in_camera.position.y = 0.0;
+    pose_robot_in_camera.position.z = 0.5;
     tf::Quaternion orientation;
-    orientation.setRPY(90.0 * deg2rad, 0, 0); // Euler angles (90, 0, 0)
+    orientation.setRPY(120.0 * deg2rad, 0.0 * deg2rad, 90.0 * deg2rad); // Euler angles (90, 0, 0)
     tf::quaternionTFToMsg(orientation, pose_robot_in_camera.orientation);
     tf::Transform tf_robot_in_camera = get_tf(pose_robot_in_camera);
 
