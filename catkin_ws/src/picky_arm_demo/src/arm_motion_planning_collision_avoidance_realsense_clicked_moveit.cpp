@@ -147,17 +147,21 @@ void depthImageCallback(const sensor_msgs::Image::ConstPtr &depth_image_msg)
 
     // Initialize pose_robot_in_camera
     // Camera depth frame -> Base frame: [-0.3, 0.0, 0.5, 120.0, 0.0, 90.0]
-    geometry_msgs::Pose pose_robot_in_camera;
-    pose_robot_in_camera.position.x = -0.3;
-    pose_robot_in_camera.position.y = 0.0;
-    pose_robot_in_camera.position.z = 0.5;
+    // geometry_msgs::Pose pose_robot_in_camera;
+    // pose_robot_in_camera.position.x = -0.3;
+    // pose_robot_in_camera.position.y = 0.0;
+    // pose_robot_in_camera.position.z = 0.5;
+    geometry_msgs::Pose pose_camera_in_robot;
+    pose_camera_in_robot.position.x = -0.275;
+    pose_camera_in_robot.position.y = 0.0;
+    pose_camera_in_robot.position.z = 0.5;
     tf::Quaternion orientation;
-    orientation.setRPY(120.0 * deg2rad, 0.0 * deg2rad, 90.0 * deg2rad); // Euler angles (90, 0, 0)
-    tf::quaternionTFToMsg(orientation, pose_robot_in_camera.orientation);
-    tf::Transform tf_robot_in_camera = get_tf(pose_robot_in_camera);
+    orientation.setRPY(120.0 * deg2rad, 0.0 * deg2rad, 90.0 * deg2rad); // Euler angles (120, 0, 90)
+    tf::quaternionTFToMsg(orientation, pose_camera_in_robot.orientation);
+    tf::Transform tf_camera_in_robot = get_tf(pose_camera_in_robot);
 
     // Compute pose_point_in_robot
-    tf::Transform tf_camera_in_robot = tf_robot_in_camera.inverse();
+    // tf::Transform tf_camera_in_robot = tf_robot_in_camera.inverse();
     tf::Transform tf_point_in_robot = tf_camera_in_robot * tf_point_in_camera;
     geometry_msgs::Pose pose_point_in_robot = get_pose(tf_point_in_robot);
 
@@ -173,6 +177,7 @@ void depthImageCallback(const sensor_msgs::Image::ConstPtr &depth_image_msg)
 
     // Print the updated XYZ coordinates here
     // ROS_INFO("Pixel (%d, %d) at Camera Frame: (%f, %f, %f)m", pixel_x, pixel_y, pose_point_in_robot.position.x, pose_point_in_robot.position.y, pose_point_in_robot.position.z);
+    // ROS_INFO("Point in Robot Frame: (%f, %f, %f)m", pose_point_in_robot.position.x, pose_point_in_robot.position.y, pose_point_in_robot.position.z);
 }
 
 // Callback for the clicked point message
@@ -211,6 +216,29 @@ bool clear_octomap(ros::ServiceClient &clearOctomapClient, std_srvs::Empty &srv)
         return false;
     }
 }
+
+// void move_to_rest()
+// {
+//     // Initialize MoveIt! interfaces
+//     moveit::planning_interface::MoveGroupInterface move_group("arm_group"); // Use the name of your "arm" group
+
+//     // Set a target joint configuration based on your SRDF-defined "rest_pose"
+//     move_group.setNamedTarget("rest_pose"); // Use the name of your "rest_pose" defined in SRDF
+
+//     // Plan and execute the motion
+//     moveit::planning_interface::MoveGroupInterface::Plan plan;
+//     bool success = (move_group.plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+//     if (success)
+//     {
+//         ROS_INFO("Planning succeeded. Executing the trajectory...");
+//         move_group.execute(plan);
+//     }
+//     else
+//     {
+//         ROS_ERROR("Planning failed!");
+//     }
+// }
 
 int main(int argc, char **argv)
 {
@@ -254,6 +282,8 @@ int main(int argc, char **argv)
     ros::ServiceClient clearOctomapClient = nh.serviceClient<std_srvs::Empty>("/clear_octomap");
     std_srvs::Empty srv;
     ROS_INFO("Ocotomap Service Client is Running.");
+
+    // move_to_rest();
 
     while (ros::ok())
     {
@@ -319,6 +349,7 @@ int main(int argc, char **argv)
                 ROS_WARN("Planning Failed! Check if the target pose is reachable and that there are no collisions.");
             }
 
+            // move_to_rest();
             // // Drop off item into bin.
             // if (dropOff)
             // {
