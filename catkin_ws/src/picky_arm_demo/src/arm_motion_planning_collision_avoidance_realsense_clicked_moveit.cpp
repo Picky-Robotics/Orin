@@ -136,7 +136,7 @@ void depthImageCallback(const sensor_msgs::Image::ConstPtr &depth_image_msg)
     geometry_msgs::Pose pose_point_in_camera;
     pose_point_in_camera.position.x = mm2m * (pixel_x - camera_info.K[2]) * depth / camera_info.K[0];
     pose_point_in_camera.position.y = mm2m * (pixel_y - camera_info.K[5]) * depth / camera_info.K[4];
-    pose_point_in_camera.position.z = (mm2m * depth) - offset;
+    pose_point_in_camera.position.z = (mm2m * depth);
     pose_point_in_camera.orientation.x = 0.0;
     pose_point_in_camera.orientation.y = 0.0;
     pose_point_in_camera.orientation.z = 0.0;
@@ -155,9 +155,19 @@ void depthImageCallback(const sensor_msgs::Image::ConstPtr &depth_image_msg)
     pose_camera_in_robot.position.x = -0.275;
     pose_camera_in_robot.position.y = 0.0;
     pose_camera_in_robot.position.z = 0.5;
-    tf::Quaternion orientation;
-    orientation.setRPY(120.0 * deg2rad, 0.0 * deg2rad, 90.0 * deg2rad); // Euler angles (120, 0, 90)
-    tf::quaternionTFToMsg(orientation, pose_camera_in_robot.orientation);
+    // Rotation matrix
+    // 0  -1/2       sqrt(3)/2
+    // -1  0         0
+    // 0  -sqrt(3)/2 -1/2
+    pose_camera_in_robot.orientation.x = -0.6123769;
+    pose_camera_in_robot.orientation.y = 0.6123769;
+    pose_camera_in_robot.orientation.z = -0.3535456;
+    pose_camera_in_robot.orientation.w = 0.3535456;
+
+    // tf::Quaternion orientation;
+    // // orientation.setRPY(60.0 * deg2rad, 0.0 * deg2rad, +90.0 * deg2rad); // Euler angles (0, 120, 90)
+    // orientation.setRPY(-90.0 * deg2rad, 60.0 * deg2rad, 90.0 * deg2rad); //
+    // tf::quaternionTFToMsg(orientation, pose_camera_in_robot.orientation);
     tf::Transform tf_camera_in_robot = get_tf(pose_camera_in_robot);
 
     // Compute pose_point_in_robot
@@ -176,7 +186,7 @@ void depthImageCallback(const sensor_msgs::Image::ConstPtr &depth_image_msg)
     clicked_position_pub.publish(clickedPosition);
 
     // Print the updated XYZ coordinates here
-    // ROS_INFO("Pixel (%d, %d) at Camera Frame: (%f, %f, %f)m", pixel_x, pixel_y, pose_point_in_robot.position.x, pose_point_in_robot.position.y, pose_point_in_robot.position.z);
+    ROS_INFO("Pixel (%d, %d) at Camera Frame: (%f, %f, %f)m", pixel_x, pixel_y, pose_point_in_camera.position.x, pose_point_in_camera.position.y, pose_point_in_camera.position.z);
     // ROS_INFO("Point in Robot Frame: (%f, %f, %f)m", pose_point_in_robot.position.x, pose_point_in_robot.position.y, pose_point_in_robot.position.z);
 }
 
@@ -217,28 +227,28 @@ bool clear_octomap(ros::ServiceClient &clearOctomapClient, std_srvs::Empty &srv)
     }
 }
 
-// void move_to_rest()
-// {
-//     // Initialize MoveIt! interfaces
-//     moveit::planning_interface::MoveGroupInterface move_group("arm_group"); // Use the name of your "arm" group
+void move_to_rest()
+{
+    // Initialize MoveIt! interfaces
+    moveit::planning_interface::MoveGroupInterface move_group("arm_group"); // Use the name of your "arm" group
 
-//     // Set a target joint configuration based on your SRDF-defined "rest_pose"
-//     move_group.setNamedTarget("rest_pose"); // Use the name of your "rest_pose" defined in SRDF
+    // Set a target joint configuration based on your SRDF-defined "rest_pose"
+    move_group.setNamedTarget("rest_pose"); // Use the name of your "rest_pose" defined in SRDF
 
-//     // Plan and execute the motion
-//     moveit::planning_interface::MoveGroupInterface::Plan plan;
-//     bool success = (move_group.plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+    // Plan and execute the motion
+    moveit::planning_interface::MoveGroupInterface::Plan plan;
+    bool success = (move_group.plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
 
-//     if (success)
-//     {
-//         ROS_INFO("Planning succeeded. Executing the trajectory...");
-//         move_group.execute(plan);
-//     }
-//     else
-//     {
-//         ROS_ERROR("Planning failed!");
-//     }
-// }
+    if (success)
+    {
+        ROS_INFO("Planning succeeded. Executing the trajectory...");
+        move_group.execute(plan);
+    }
+    else
+    {
+        ROS_ERROR("Planning failed!");
+    }
+}
 
 int main(int argc, char **argv)
 {
