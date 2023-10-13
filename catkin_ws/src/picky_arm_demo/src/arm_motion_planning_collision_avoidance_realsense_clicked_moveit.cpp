@@ -127,7 +127,7 @@ void depthImageCallback(const sensor_msgs::Image::ConstPtr &depth_image_msg)
     // Check for invalid depth values
     if (depth <= 0.0)
     {
-        ROS_WARN("Waiting for a click or invalid depth value at the specified pixel coordinates.");
+        // ROS_WARN("Waiting for a click or invalid depth value at the specified pixel coordinates.");
         return;
     }
 
@@ -136,7 +136,7 @@ void depthImageCallback(const sensor_msgs::Image::ConstPtr &depth_image_msg)
     geometry_msgs::Pose pose_point_in_camera;
     pose_point_in_camera.position.x = mm2m * (pixel_x - camera_info.K[2]) * depth / camera_info.K[0];
     pose_point_in_camera.position.y = mm2m * (pixel_y - camera_info.K[5]) * depth / camera_info.K[4];
-    pose_point_in_camera.position.z = (mm2m * depth);
+    pose_point_in_camera.position.z = (mm2m * depth) - offset;
     pose_point_in_camera.orientation.x = 0.0;
     pose_point_in_camera.orientation.y = 0.0;
     pose_point_in_camera.orientation.z = 0.0;
@@ -230,23 +230,40 @@ bool clear_octomap(ros::ServiceClient &clearOctomapClient, std_srvs::Empty &srv)
 void move_to_rest()
 {
     // Initialize MoveIt! interfaces
-    moveit::planning_interface::MoveGroupInterface move_group("arm_group"); // Use the name of your "arm" group
+    moveit::planning_interface::MoveGroupInterface arm_group("arm_group");
+    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+    ROS_INFO("Arm Group Setup Completed ... Going Home!");
 
-    // Set a target joint configuration based on your SRDF-defined "rest_pose"
-    move_group.setNamedTarget("rest_pose"); // Use the name of your "rest_pose" defined in SRDF
+    arm_group.setPlanningTime(10.0); // Time to plan
 
-    // Plan and execute the motion
-    moveit::planning_interface::MoveGroupInterface::Plan plan;
-    bool success = (move_group.plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+    // Set a target pose
+    geometry_msgs::Pose rest_pose;
+    rest_pose.orientation.x = -0.0; // -0.8509035
+    rest_pose.orientation.y = -0.0;
+    rest_pose.orientation.z = -0.0;
+    rest_pose.orientation.w = 1.0; // 0.525322
+    rest_pose.position.x = -0.1923;
+    rest_pose.position.y = -0.1224;
+    rest_pose.position.z = 0.1947;
+    arm_group.setPoseTarget(rest_pose);
+
+    ROS_INFO("MoveIt! is planning to rest pose ...");
+
+    // Planing trajectory.
+    ROS_INFO("Planning started ..!");
+    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+    bool success = arm_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
+    ROS_INFO("*** Planning finished ***");
 
     if (success)
     {
-        ROS_INFO("Planning succeeded. Executing the trajectory...");
-        move_group.execute(plan);
+        ROS_INFO("Planning succeeded. Now robot executes the trajectory!");
+        // Execute trajectory.
+        arm_group.execute(my_plan);
     }
     else
     {
-        ROS_ERROR("Planning failed!");
+        ROS_WARN("Planning Failed! Check if the target pose is reachable and that there are no collisions.");
     }
 }
 
@@ -293,7 +310,7 @@ int main(int argc, char **argv)
     std_srvs::Empty srv;
     ROS_INFO("Ocotomap Service Client is Running.");
 
-    // move_to_rest();
+    move_to_rest();
 
     while (ros::ok())
     {
