@@ -25,8 +25,8 @@
 sensor_msgs::CameraInfo camera_info;
 bool camera_info_received = false;
 bool octomap_clear = false;
-// bool trajectoryExecuted = false;
-// bool dropOff = false;
+bool trajectoryExecuted = false;
+bool dropOff = false;
 geometry_msgs::Point clickedPixel;
 geometry_msgs::Point clickedPosition;
 std_msgs::Bool triggerArm;
@@ -71,17 +71,20 @@ geometry_msgs::Pose get_pose(const tf::Transform &tf_transform)
 
 // void executeTrajectoryCallback(const moveit_msgs::ExecuteTrajectoryFeedbackConstPtr &feedback)
 // {
-
-//     if (feedback->state == moveit_msgs::ExecuteTrajectoryFeedback::MONITOR)
+//     if (feedback->state == actionlib::SimpleClientGoalState::SUCCEEDED)
 //     {
-//         ROS_INFO("Trajectory is still executing...");
+//         ROS_INFO("Trajectory completed ...");
 //     }
-//     else if (!(feedback->state == moveit_msgs::ExecuteTrajectoryFeedback::IDLE))
-//     {
-//         ROS_INFO("Trajectory Execution Completed.");
-//         trajectoryExecuted = true;
-//         // Now you can proceed with another task.
-//     }
+//     // if (feedback->state == move_group::MoveGroupState::MONITOR)
+//     // {
+//     //     ROS_INFO("Trajectory is still executing...");
+//     // }
+//     // else if (feedback->state != move_group::MoveGroupState::IDLE)
+//     // {
+//     //     ROS_INFO("Trajectory Execution Completed.");
+//     //     trajectoryExecuted = true;
+//     //     // Now you can proceed with another task.
+//     // }
 // }
 
 // Callback for the camera info message
@@ -267,6 +270,46 @@ void move_to_rest()
     }
 }
 
+void move_to_dropoff()
+{
+    // Initialize MoveIt! interfaces
+    moveit::planning_interface::MoveGroupInterface arm_group("arm_group");
+    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+    ROS_INFO("Arm Group Setup Completed ... Going DropOff!");
+
+    arm_group.setPlanningTime(10.0); // Time to plan
+
+    // Set a target pose
+    geometry_msgs::Pose dropoff_pose;
+    dropoff_pose.orientation.x = -0.4754915;
+    dropoff_pose.orientation.y = 0.8790473;
+    dropoff_pose.orientation.z = -0.0026067;
+    dropoff_pose.orientation.w = 0.0343051;
+    dropoff_pose.position.x = -0.1865;
+    dropoff_pose.position.y = -0.0235;
+    dropoff_pose.position.z = +0.1981;
+    arm_group.setPoseTarget(dropoff_pose);
+
+    ROS_INFO("MoveIt! is planning to dropoff pose ...");
+
+    // Planing trajectory.
+    ROS_INFO("Planning started ..!");
+    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+    bool success = arm_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
+    ROS_INFO("*** Planning finished ***");
+
+    if (success)
+    {
+        ROS_INFO("Planning succeeded. Now robot executes the trajectory!");
+        // Execute trajectory.
+        arm_group.execute(my_plan);
+    }
+    else
+    {
+        ROS_WARN("Planning Failed! Check if the target pose is reachable and that there are no collisions.");
+    }
+}
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "Arm_Realsense");
@@ -315,8 +358,8 @@ int main(int argc, char **argv)
     while (ros::ok())
     {
         octomap_clear = false;
-        // trajectoryExecuted = false;
-        // dropOff = false;
+        trajectoryExecuted = false;
+        dropOff = false;
 
         if (triggerArm.data)
         {
@@ -338,10 +381,10 @@ int main(int argc, char **argv)
 
             // Set a target pose
             geometry_msgs::Pose target_pose;
-            target_pose.orientation.x = 0.0; // -0.8509035
-            target_pose.orientation.y = 0.0;
-            target_pose.orientation.z = 0.0;
-            target_pose.orientation.w = 1.0; // 0.525322
+            target_pose.orientation.x = +0.5;
+            target_pose.orientation.y = -0.5;
+            target_pose.orientation.z = +0.5;
+            target_pose.orientation.w = -0.5;
             target_pose.position.x = clickedPosition.x;
             target_pose.position.y = clickedPosition.y;
             target_pose.position.z = clickedPosition.z;
@@ -360,28 +403,33 @@ int main(int argc, char **argv)
                 ROS_INFO("Planning succeeded. Now robot executes the trajectory!");
                 // Execute trajectory.
                 arm_group.execute(my_plan);
-                // while (!trajectoryExecuted)
-                // {
-                //     ros::Duration(0.1).sleep(); // Sleep for a short duration to avoid busy-waiting
-                //     ROS_INFO("Trajectory is being executed ...");
-                // }
-                // if (trajectoryExecuted)
-                // {
-                //     dropOff = true;
-                //     ROS_INFO("*** Trajectory Execution Completed ***");
-                // }
+                trajectoryExecuted = true;
+                while (!trajectoryExecuted)
+                {
+                    ros::Duration(0.1).sleep(); // Sleep for a short duration to avoid busy-waiting
+                    ROS_INFO("Trajectory is being executed ...");
+                }
+                if (trajectoryExecuted)
+                {
+                    dropOff = true;
+                    ROS_INFO("*** Trajectory Execution Completed ***");
+                }
             }
             else
             {
                 ROS_WARN("Planning Failed! Check if the target pose is reachable and that there are no collisions.");
             }
 
-            // move_to_rest();
-            // // Drop off item into bin.
-            // if (dropOff)
-            // {
-            //     ROS_INFO("*** Robot Going to DropOff ***");
-            // }
+            if (dropOff)
+            {
+                move_to_dropoff();
+            }
+
+            if (dropOff && success)
+            {
+                // Move back robot to rest pose
+                move_to_rest();
+            }
         }
     }
     return 0;
