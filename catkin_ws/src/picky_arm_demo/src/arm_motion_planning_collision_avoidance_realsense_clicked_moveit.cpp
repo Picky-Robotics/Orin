@@ -135,7 +135,7 @@ void depthImageCallback(const sensor_msgs::Image::ConstPtr &depth_image_msg)
     }
 
     // Calculate the 3D point in camera coordinates
-    float offset = 0.1;
+    float offset = 0.11;
     geometry_msgs::Pose pose_point_in_camera;
     pose_point_in_camera.position.x = mm2m * (pixel_x - camera_info.K[2]) * depth / camera_info.K[0];
     pose_point_in_camera.position.y = mm2m * (pixel_y - camera_info.K[5]) * depth / camera_info.K[4];
