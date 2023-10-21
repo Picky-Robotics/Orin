@@ -75,6 +75,7 @@ ac6b58b533f9ff9485f418534d01d34c /home/orin/Orin/catkin_ws/devel/include/ultraar
 7988d6b7bdb1f32698d23eaacdd44c64 /home/orin/Orin/catkin_ws/devel/include/ultraarm_communication/ultraArmPumpStatus.h
 879c314b1e9c55ee5f4c33e7e02b76c1 /home/orin/Orin/catkin_ws/devel/include/ultraarm_communication/ultraArmSetAngles.h
 8d04a4afb6232cb719d13b218cd42964 /home/orin/Orin/catkin_ws/devel/include/ultraarm_communication/ultraArmSetCoords.h
+28f7d7bc1a0e9406be48e46cb53e1a26 /home/orin/Orin/catkin_ws/devel/include/web_joystick_control/JoystickData.h
 56e7dfbfe30741b93697fef870a0e91c /home/orin/Orin/catkin_ws/devel/lib/python3/dist-packages/mecharm_communication/msg/_MycobotAngles.py
 e854db174321d0eb12982936552a4590 /home/orin/Orin/catkin_ws/devel/lib/python3/dist-packages/mecharm_communication/msg/_MycobotCoords.py
 efcecbdde1ea8ebc370339d33e61ba61 /home/orin/Orin/catkin_ws/devel/lib/python3/dist-packages/mecharm_communication/msg/_MycobotGripperStatus.py
@@ -165,6 +166,8 @@ db82af942bdee45940a8e27fd15fda1d /home/orin/Orin/catkin_ws/devel/lib/python3/dis
 de04df28b43b95347c9d06e396a980f3 /home/orin/Orin/catkin_ws/devel/lib/python3/dist-packages/ultraarm_communication/srv/_SetAngles.py
 c60ee159872a72ddbc23c2a1407c7e81 /home/orin/Orin/catkin_ws/devel/lib/python3/dist-packages/ultraarm_communication/srv/_SetCoords.py
 0b3ccb9adab0ede23b803a383579e94a /home/orin/Orin/catkin_ws/devel/lib/python3/dist-packages/ultraarm_communication/srv/__init__.py
+fb3a073eaaa578af2967e4fa32b60dd4 /home/orin/Orin/catkin_ws/devel/lib/python3/dist-packages/web_joystick_control/msg/_JoystickData.py
+d96186893d7dbbc4d63b7b8bdda7dcf8 /home/orin/Orin/catkin_ws/devel/lib/python3/dist-packages/web_joystick_control/msg/__init__.py
 d5ec68ae302c1b83ec4aea4d24e4615e /home/orin/Orin/catkin_ws/devel/share/common-lisp/ros/mecharm_communication/msg/MycobotAngles.lisp
 527f099069afaf02b7ce578b9725e424 /home/orin/Orin/catkin_ws/devel/share/common-lisp/ros/mecharm_communication/msg/MycobotCoords.lisp
 ef8f5790ec68e5a2204fc80f25367356 /home/orin/Orin/catkin_ws/devel/share/common-lisp/ros/mecharm_communication/msg/MycobotGripperStatus.lisp
@@ -241,6 +244,7 @@ db5e53d0bf265b4148cfd98049e97629 /home/orin/Orin/catkin_ws/devel/share/common-li
 6c9ec4212ebfb99fdfc5ec24c2416348 /home/orin/Orin/catkin_ws/devel/share/common-lisp/ros/ultraarm_communication/srv/PumpStatus.lisp
 b83613d3df084673370c8166844a44e6 /home/orin/Orin/catkin_ws/devel/share/common-lisp/ros/ultraarm_communication/srv/SetAngles.lisp
 6a45fc694594277a16b8c7e58dc485a6 /home/orin/Orin/catkin_ws/devel/share/common-lisp/ros/ultraarm_communication/srv/SetCoords.lisp
+2218b8b302dc0958757e51c11c657ae2 /home/orin/Orin/catkin_ws/devel/share/common-lisp/ros/web_joystick_control/msg/JoystickData.lisp
 8383381b54cee82c0cf36d435979ea5d /home/orin/Orin/catkin_ws/devel/share/gennodejs/ros/mecharm_communication/msg/MycobotAngles.js
 5bec295ea36c49f91150f8ef458d47a8 /home/orin/Orin/catkin_ws/devel/share/gennodejs/ros/mecharm_communication/msg/MycobotCoords.js
 5fe8465e0c3e2b0dee8436ebb2ff4ebc /home/orin/Orin/catkin_ws/devel/share/gennodejs/ros/mecharm_communication/msg/MycobotGripperStatus.js
@@ -317,6 +321,7 @@ aec24da3d8da22dabe1e1e3b648d3901 /home/orin/Orin/catkin_ws/devel/share/gennodejs
 54226b6ef3b26f4d5a7298fde63d651f /home/orin/Orin/catkin_ws/devel/share/gennodejs/ros/ultraarm_communication/srv/PumpStatus.js
 ecbae91b259c0a775649f4a571d8952b /home/orin/Orin/catkin_ws/devel/share/gennodejs/ros/ultraarm_communication/srv/SetAngles.js
 2717b0fb2274f8009f396f62b71dc221 /home/orin/Orin/catkin_ws/devel/share/gennodejs/ros/ultraarm_communication/srv/SetCoords.js
+1cdb6b462a6a3958225e97e354985e4c /home/orin/Orin/catkin_ws/devel/share/gennodejs/ros/web_joystick_control/msg/JoystickData.js
 0596f3d5e8c099f5f17af8943be72106 /home/orin/Orin/catkin_ws/devel/share/roseus/ros/mecharm_communication/manifest.l
 59dfb9d2c414b23cc00c12b70def9ba1 /home/orin/Orin/catkin_ws/devel/share/roseus/ros/mecharm_communication/msg/MycobotAngles.l
 d0880dbe5e710138855aed151db5487d /home/orin/Orin/catkin_ws/devel/share/roseus/ros/mecharm_communication/msg/MycobotCoords.l
@@ -400,6 +405,8 @@ abadbe29c535ad1499510a327148ce63 /home/orin/Orin/catkin_ws/devel/share/roseus/ro
 671a024245ee71a951328cb0f7aeac67 /home/orin/Orin/catkin_ws/devel/share/roseus/ros/ultraarm_communication/srv/PumpStatus.l
 82583df97a12745fda1c14f1f07cfd82 /home/orin/Orin/catkin_ws/devel/share/roseus/ros/ultraarm_communication/srv/SetAngles.l
 2a41b6a4357f833356ef55f4338b0a83 /home/orin/Orin/catkin_ws/devel/share/roseus/ros/ultraarm_communication/srv/SetCoords.l
+75a7d7aa41a5c572f1cb40f8ae7025d2 /home/orin/Orin/catkin_ws/devel/share/roseus/ros/web_joystick_control/manifest.l
+1b9cf5911ce1c66a480a3744221dc919 /home/orin/Orin/catkin_ws/devel/share/roseus/ros/web_joystick_control/msg/JoystickData.l
 f798bfeacd23878b2535631f6c3b05cc CMakeFiles/clean_test_results
 3dc34c40da6db20b013c22269ec929b9 ddynamic_reconfigure/CMakeFiles/_run_tests_ddynamic_reconfigure_rostest_test_ddynamic_reconfigure.test
 5d8d07353a79f9929678054a5f3e492a ddynamic_reconfigure/CMakeFiles/clean_test_results_ddynamic_reconfigure
@@ -549,3 +556,9 @@ b287694aedcebb126476e5ebe5913764 rgbd_launch/CMakeFiles/run_tests_rgbd_launch_ro
 a0b350e3c64e84211319e73aace56240 srdfdom/CMakeFiles/clean_test_results_srdfdom
 9d692f4885cb260b57ef2910ca6193ab srdfdom/CMakeFiles/run_tests_srdfdom_rostest_test_srdf_parser.test
 5a417360d8c8e6817336f317f0734b19 srdfdom/CMakeFiles/run_tests_srdfdom_rostest_test_srdf_parser_cpp.test
+21ee674f18ea4d467770f71b684f3b08 web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData
+6738c87832d5faa62a1815b16bde81fd web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp
+6738c87832d5faa62a1815b16bde81fd web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus
+6738c87832d5faa62a1815b16bde81fd web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp
+6738c87832d5faa62a1815b16bde81fd web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs
+6738c87832d5faa62a1815b16bde81fd web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py
