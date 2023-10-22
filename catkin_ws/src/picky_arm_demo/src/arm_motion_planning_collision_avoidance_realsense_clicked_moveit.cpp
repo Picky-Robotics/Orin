@@ -189,7 +189,7 @@ void depthImageCallback(const sensor_msgs::Image::ConstPtr &depth_image_msg)
     clicked_position_pub.publish(clickedPosition);
 
     // Print the updated XYZ coordinates here
-    ROS_INFO("Pixel (%d, %d) at Camera Frame: (%f, %f, %f)m", pixel_x, pixel_y, pose_point_in_camera.position.x, pose_point_in_camera.position.y, pose_point_in_camera.position.z);
+    // ROS_INFO("Pixel (%d, %d) at Camera Frame: (%f, %f, %f)m", pixel_x, pixel_y, pose_point_in_camera.position.x, pose_point_in_camera.position.y, pose_point_in_camera.position.z);
     // ROS_INFO("Point in Robot Frame: (%f, %f, %f)m", pose_point_in_robot.position.x, pose_point_in_robot.position.y, pose_point_in_robot.position.z);
 }
 
