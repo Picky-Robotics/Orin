@@ -30,6 +30,7 @@ bool dropOff = false;
 geometry_msgs::Point clickedPixel;
 geometry_msgs::Point clickedPosition;
 std_msgs::Bool triggerArm;
+std_msgs::Bool triggerSuction;
 
 // Global variables for clicked point coordinates
 int camera_width = 640;
@@ -39,6 +40,7 @@ float deg2rad = M_PI / 180.0;
 
 ros::Publisher clicked_position_pub;
 ros::Publisher trigger_arm_pub;
+ros::Publisher trigger_suction_pub;
 
 // Function to convert a geometry_msgs::Pose to a tf::Transform
 tf::Transform get_tf(const geometry_msgs::Pose &pose)
@@ -338,6 +340,9 @@ int main(int argc, char **argv)
     // Create a publisher for arm trigger
     trigger_arm_pub = nh.advertise<std_msgs::Bool>("/trigger_arm", 1);
 
+    // Create a publisher for arm trigger
+    trigger_suction_pub = nh.advertise<std_msgs::Bool>("/trigger_suction", 1);
+
     // Create a subscriber to monitor trajectory execution feedback
     // ros::Subscriber feedback_sub = nh.subscribe("/execute_trajectory/feedback", 10, executeTrajectoryCallback);
 
@@ -352,6 +357,9 @@ int main(int argc, char **argv)
     ros::ServiceClient clearOctomapClient = nh.serviceClient<std_srvs::Empty>("/clear_octomap");
     std_srvs::Empty srv;
     ROS_INFO("Ocotomap Service Client is Running.");
+    triggerSuction.data = false;
+    trigger_suction_pub.publish(triggerSuction);
+    ROS_INFO("Suction Pump is OFF.");
 
     move_to_rest();
 
@@ -413,6 +421,8 @@ int main(int argc, char **argv)
                 {
                     dropOff = true;
                     ROS_INFO("*** Trajectory Execution Completed ***");
+                    triggerSuction.data = true;
+                    trigger_suction_pub.publish(triggerSuction);
                 }
             }
             else
@@ -423,6 +433,8 @@ int main(int argc, char **argv)
             if (dropOff)
             {
                 move_to_dropoff();
+                triggerSuction.data = false;
+                trigger_suction_pub.publish(triggerSuction);
             }
 
             if (dropOff && success)
