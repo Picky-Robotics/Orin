@@ -294,17 +294,17 @@ void move_to_rest()
     ROS_INFO("MoveIt! is planning to rest pose ...");
 
     // Planing trajectory.
-    ROS_INFO("Planning started ..!");
+    ROS_INFO("Planning to rest pose started ..!");
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
     bool success = arm_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
-    ROS_INFO("*** Planning finished ***");
+    ROS_INFO("*** Planning to rest pose finished ***");
 
     if (success)
     {
         ROS_INFO("Planning to rest pose succeeded. Now robot executes the trajectory!");
         // Execute trajectory.
         arm_group.execute(my_plan);
-        ROS_INFO("*** Trajectory was executed successfully ***");
+        ROS_INFO("*** Trajectory was executed successfully robot is in rest pose ***");
     }
     else
     {
@@ -409,6 +409,7 @@ int main(int argc, char **argv)
     {
         if (operationMode.data == "AUTO")
         {
+            ROS_INFO("*** Operation mode is AUTO ***");
             octomap_clear = false;
             trajectoryExecuted = false;
             dropOff = false;
@@ -423,7 +424,7 @@ int main(int argc, char **argv)
 
             if (triggerArm.data)
             {
-                ROS_INFO("Arm triggered to move to get click position.");
+                ROS_INFO("Arm triggered to move to clicked position.");
                 // Free up arm to accept new trigger later.
                 std_msgs::Bool trigger_arm_msg;
                 trigger_arm_msg.data = false;
@@ -467,7 +468,7 @@ int main(int argc, char **argv)
                         trajectoryExecuted = true;
                         if (trajectoryExecuted)
                         {
-                            robot_in_rest = true;
+                            robot_in_rest = false;
                             ROS_INFO("*** Trajectory Execution Completed ***");
                             triggerSuction.data = true;
                             trigger_suction_pub.publish(triggerSuction);
@@ -485,17 +486,19 @@ int main(int argc, char **argv)
                             }
                             else
                             {
-                                ROS_INFO("Robot is NOT going to drop off item!");
+                                ROS_WARN("Robot is NOT going to drop off item! Please switch to Manual mode and drop the item.");
+                                // Recovery mode.
                             }
                         }
                         else
                         {
-                            ROS_WARN("Trajectory Execution Failed!");
+                            ROS_WARN("Trajectory Execution Failed! Please check if the robot is functional.");
+                            // Recovery mode.
                         }
                     }
                     else
                     {
-                        ROS_WARN("Planning Failed! Check if the target pose is reachable and that there are no collisions.");
+                        ROS_WARN("Planning Failed! Check if the target point is reachable and there are no collisions.");
                     }
                 }
             }
@@ -503,7 +506,7 @@ int main(int argc, char **argv)
         }
         else if (operationMode.data == "MANUAL")
         {
-            ROS_WARN("Operation mode is MANUAL.");
+            ROS_INFO("*** Operation mode is MANUAL ***");
             robot_in_rest = false;
         }
     }
