@@ -1182,6 +1182,9 @@ warehouse_ros_DIR:PATH=/opt/ros/noetic/share/warehouse_ros/cmake
 //Value Computed by CMake
 web_joystick_control_BINARY_DIR:STATIC=/home/orin/Orin/catkin_ws/build/web_joystick_control
 
+//The directory containing a CMake configuration file for web_joystick_control.
+web_joystick_control_DIR:PATH=/home/orin/Orin/catkin_ws/devel/share/web_joystick_control/cmake
+
 //Value Computed by CMake
 web_joystick_control_SOURCE_DIR:STATIC=/home/orin/Orin/catkin_ws/src/web_joystick_control
 

@@ -104,8 +104,8 @@ all: myagv_urdf/all
 all: realsense-ros/realsense2_camera/all
 all: mycobot_ros/ultraArm/ultraarm_communication/all
 all: srdfdom/all
-all: picky_arm_demo/all
 all: web_joystick_control/all
+all: picky_arm_demo/all
 all: mycobot_ros/mecharm/mecharm/all
 all: mycobot_ros/mecharm/mecharm_pi/all
 all: mycobot_ros/Mybuddy/mybuddy/all
@@ -168,8 +168,8 @@ preinstall: myagv_urdf/preinstall
 preinstall: realsense-ros/realsense2_camera/preinstall
 preinstall: mycobot_ros/ultraArm/ultraarm_communication/preinstall
 preinstall: srdfdom/preinstall
-preinstall: picky_arm_demo/preinstall
 preinstall: web_joystick_control/preinstall
+preinstall: picky_arm_demo/preinstall
 preinstall: mycobot_ros/mecharm/mecharm/preinstall
 preinstall: mycobot_ros/mecharm/mecharm_pi/preinstall
 preinstall: mycobot_ros/Mybuddy/mybuddy/preinstall
@@ -237,8 +237,8 @@ clean: myagv_urdf/clean
 clean: realsense-ros/realsense2_camera/clean
 clean: mycobot_ros/ultraArm/ultraarm_communication/clean
 clean: srdfdom/clean
-clean: picky_arm_demo/clean
 clean: web_joystick_control/clean
+clean: picky_arm_demo/clean
 clean: mycobot_ros/mecharm/mecharm/clean
 clean: mycobot_ros/mecharm/mecharm_pi/clean
 clean: mycobot_ros/Mybuddy/mybuddy/clean
@@ -12214,6 +12214,339 @@ srdfdom/CMakeFiles/_run_tests_srdfdom_rostest_test_srdf_parser.test.dir/clean:
 .PHONY : srdfdom/CMakeFiles/_run_tests_srdfdom_rostest_test_srdf_parser.test.dir/clean
 
 #=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_generate_messages"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/rule
+
+# Convenience name for target.
+web_joystick_control_generate_messages: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/rule
+
+.PHONY : web_joystick_control_generate_messages
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all: mycobot_ros/mycobot_gazebo/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_generate_messages_cpp"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+web_joystick_control_generate_messages_cpp: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/rule
+
+.PHONY : web_joystick_control_generate_messages_cpp
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_gencpp"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/rule
+
+# Convenience name for target.
+web_joystick_control_gencpp: web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/rule
+
+.PHONY : web_joystick_control_gencpp
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all: mycobot_ros/mycobot_gazebo/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num=99 "Built target web_joystick_control_generate_messages_eus"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+web_joystick_control_generate_messages_eus: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/rule
+
+.PHONY : web_joystick_control_generate_messages_eus
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all: mycobot_ros/mycobot_gazebo/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_generate_messages_nodejs"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+web_joystick_control_generate_messages_nodejs: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/rule
+
+.PHONY : web_joystick_control_generate_messages_nodejs
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_geneus"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/rule
+
+# Convenience name for target.
+web_joystick_control_geneus: web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/rule
+
+.PHONY : web_joystick_control_geneus
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all: mycobot_ros/mycobot_gazebo/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_generate_messages_lisp"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+web_joystick_control_generate_messages_lisp: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/rule
+
+.PHONY : web_joystick_control_generate_messages_lisp
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all:
+	$(MAKE) -f web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/build.make web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/build.make web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target _web_joystick_control_generate_messages_check_deps_JoystickData"
+.PHONY : web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/rule
+
+# Convenience name for target.
+_web_joystick_control_generate_messages_check_deps_JoystickData: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/rule
+
+.PHONY : _web_joystick_control_generate_messages_check_deps_JoystickData
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/build.make web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_genlisp"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/rule
+
+# Convenience name for target.
+web_joystick_control_genlisp: web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/rule
+
+.PHONY : web_joystick_control_genlisp
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all: mycobot_ros/mycobot_gazebo/CMakeFiles/std_msgs_generate_messages_py.dir/all
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num=100 "Built target web_joystick_control_generate_messages_py"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/rule
+
+# Convenience name for target.
+web_joystick_control_generate_messages_py: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/rule
+
+.PHONY : web_joystick_control_generate_messages_py
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_gennodejs"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/rule
+
+# Convenience name for target.
+web_joystick_control_gennodejs: web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/rule
+
+.PHONY : web_joystick_control_gennodejs
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/clean
+
+#=============================================================================
+# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir
+
+# All Build rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/depend
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_genpy"
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/all
+
+# Build rule for subdir invocation for target.
+web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/rule
+
+# Convenience name for target.
+web_joystick_control_genpy: web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/rule
+
+.PHONY : web_joystick_control_genpy
+
+# clean rule for target.
+web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/clean:
+	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/clean
+.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/clean
+
+#=============================================================================
 # Target rules for target picky_arm_demo/CMakeFiles/arm_motion_planning_collision_avoidance_moveit.dir
 
 # All Build rule for target.
@@ -12730,339 +13063,6 @@ topic_tools_generate_messages_lisp: picky_arm_demo/CMakeFiles/topic_tools_genera
 picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/clean:
 	$(MAKE) -f picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/clean
 .PHONY : picky_arm_demo/CMakeFiles/topic_tools_generate_messages_lisp.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_generate_messages"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/rule
-
-# Convenience name for target.
-web_joystick_control_generate_messages: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/rule
-
-.PHONY : web_joystick_control_generate_messages
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all: mycobot_ros/mycobot_gazebo/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_generate_messages_cpp"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-web_joystick_control_generate_messages_cpp: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/rule
-
-.PHONY : web_joystick_control_generate_messages_cpp
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_cpp.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_gencpp"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/rule
-
-# Convenience name for target.
-web_joystick_control_gencpp: web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/rule
-
-.PHONY : web_joystick_control_gencpp
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gencpp.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all: mycobot_ros/mycobot_gazebo/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num=99 "Built target web_joystick_control_generate_messages_eus"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-web_joystick_control_generate_messages_eus: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/rule
-
-.PHONY : web_joystick_control_generate_messages_eus
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all: mycobot_ros/mycobot_gazebo/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_generate_messages_nodejs"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-web_joystick_control_generate_messages_nodejs: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/rule
-
-.PHONY : web_joystick_control_generate_messages_nodejs
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_eus.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_geneus"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/rule
-
-# Convenience name for target.
-web_joystick_control_geneus: web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/rule
-
-.PHONY : web_joystick_control_geneus
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_geneus.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all: mycobot_ros/mycobot_gazebo/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_generate_messages_lisp"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-web_joystick_control_generate_messages_lisp: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/rule
-
-.PHONY : web_joystick_control_generate_messages_lisp
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all:
-	$(MAKE) -f web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/build.make web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/build.make web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target _web_joystick_control_generate_messages_check_deps_JoystickData"
-.PHONY : web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/rule
-
-# Convenience name for target.
-_web_joystick_control_generate_messages_check_deps_JoystickData: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/rule
-
-.PHONY : _web_joystick_control_generate_messages_check_deps_JoystickData
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/build.make web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_lisp.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_genlisp"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/rule
-
-# Convenience name for target.
-web_joystick_control_genlisp: web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/rule
-
-.PHONY : web_joystick_control_genlisp
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genlisp.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all: mycobot_ros/mycobot_gazebo/CMakeFiles/std_msgs_generate_messages_py.dir/all
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all: web_joystick_control/CMakeFiles/_web_joystick_control_generate_messages_check_deps_JoystickData.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num=100 "Built target web_joystick_control_generate_messages_py"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/rule
-
-# Convenience name for target.
-web_joystick_control_generate_messages_py: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/rule
-
-.PHONY : web_joystick_control_generate_messages_py
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_nodejs.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_gennodejs"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/rule
-
-# Convenience name for target.
-web_joystick_control_gennodejs: web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/rule
-
-.PHONY : web_joystick_control_gennodejs
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_gennodejs.dir/clean
-
-#=============================================================================
-# Target rules for target web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir
-
-# All Build rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/all: web_joystick_control/CMakeFiles/web_joystick_control_generate_messages_py.dir/all
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/depend
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/orin/Orin/catkin_ws/build/CMakeFiles --progress-num= "Built target web_joystick_control_genpy"
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/all
-
-# Build rule for subdir invocation for target.
-web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/orin/Orin/catkin_ws/build/CMakeFiles 0
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/rule
-
-# Convenience name for target.
-web_joystick_control_genpy: web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/rule
-
-.PHONY : web_joystick_control_genpy
-
-# clean rule for target.
-web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/clean:
-	$(MAKE) -f web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/build.make web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/clean
-.PHONY : web_joystick_control/CMakeFiles/web_joystick_control_genpy.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

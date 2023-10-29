@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/orin/Orin/catkin_ws/devel/include/web_joystick_control/JoystickData.h
+string
+-
+vector
+-
+memory
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/orin/Orin/catkin_ws/src/geometric_shapes/include/geometric_shapes/check_isometry.h
 algorithm
 -
@@ -69,7 +85,11 @@ moveit_msgs/ExecuteTrajectoryAction.h
 -
 sensor_msgs/Joy.h
 -
+sensor_msgs/JointState.h
+-
 std_msgs/Float64MultiArray.h
+-
+web_joystick_control/JoystickData.h
 -
 
 /home/orin/Orin/catkin_ws/src/srdfdom/include/srdfdom/model.h

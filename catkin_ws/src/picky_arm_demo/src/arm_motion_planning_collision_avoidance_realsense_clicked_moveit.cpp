@@ -22,7 +22,9 @@
 #include <tf/transform_broadcaster.h>
 #include <moveit_msgs/ExecuteTrajectoryAction.h>
 #include <sensor_msgs/Joy.h>
+#include <sensor_msgs/JointState.h>
 #include <std_msgs/Float64MultiArray.h>
+#include <web_joystick_control/JoystickData.h>
 
 // Global variables for storing camera parameters
 sensor_msgs::CameraInfo camera_info;
@@ -31,6 +33,7 @@ bool octomap_clear = false;
 bool trajectoryExecuted = false;
 bool dropOff = false;
 bool robot_in_rest = false;
+
 geometry_msgs::Point clickedPixel;
 geometry_msgs::Point clickedPosition;
 std_msgs::Bool triggerArm;
@@ -41,36 +44,56 @@ std_msgs::String operationMode;
 int camera_width = 640;
 int camera_length = 480;
 float mm2m = 0.001;
-float deg2rad = M_PI / 180.0;
+double rad2deg = 180.0 / M_PI;
+double deg2rad = M_PI / 180.0;
+float increment = 5.0;
 
 ros::Publisher clicked_position_pub;
 ros::Publisher trigger_arm_pub;
 ros::Publisher trigger_suction_pub;
+ros::Publisher joint_positions_pub;
 
 // ***
-std::vector<double> joy_joint_values(6, 0.0); // Initialize with zeros
+std::vector<double> joint_positions = {0.0, 0.0, 0.0, 0.0, 0.0, 45.0}; // Initialize with zeros
 int gripper_command = 0;
 
-void joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
+void joyCallback(const web_joystick_control::JoystickData::ConstPtr &joy)
 {
-    static const double increment = 5.0;
 
+    float joy_axes[6]; // Array to store truncated joystick axes values
+    for (int i = 0; i < 6; i++)
+    {
+        joy_axes[i] = static_cast<int>(joy->axes[i] * 10) / 10.0; // Truncate to one decimal place
+    }
+
+    // Joint positions are in degree.
     gripper_command = joy->buttons[0];
-    joy_joint_values[0] -= joy->axes[0] * increment; // J1 -> Left: counter-clockwise, Right: Clockwise
-    joy_joint_values[1] += joy->axes[1] * increment; // J2
-    joy_joint_values[2] += joy->axes[3] * increment; // J3
-    joy_joint_values[3] += joy->axes[4] * increment; // J4
+    joint_positions[0] -= joy_axes[0] * increment; // J1 -> Left: counter-clockwise, Right: Clockwise
+    joint_positions[1] += joy_axes[1] * increment; // J2
+    joint_positions[2] += joy_axes[3] * increment; // J3
+    joint_positions[3] += joy_axes[4] * increment; // J4
 
     if (joy->buttons[1])
     {
-        joy_joint_values[4] += 0.5 * (joy->axes[2] + 1) * increment; // J5 initial value = -1 (-1 -> +1)
-        joy_joint_values[5] += 0.5 * (joy->axes[5] + 1) * increment; // J6  initial value = -1 (-1 -> +1)
+        joint_positions[4] += 0.5 * (joy_axes[2] + 1) * increment; // J5 initial value = -1 (-1 -> +1)
+        joint_positions[5] += 0.5 * (joy_axes[5] + 1) * increment; // J6  initial value = -1 (-1 -> +1)
     }
     else
     {
-        joy_joint_values[4] -= 0.5 * (joy->axes[2] + 1) * increment; // J5 initial value = -1 (-1 -> +1)
-        joy_joint_values[5] -= 0.5 * (joy->axes[5] + 1) * increment; // J6  initial value = -1 (-1 -> +1)
+        joint_positions[4] -= 0.5 * (joy_axes[2] + 1) * increment; // J5 initial value = -1 (-1 -> +1)
+        joint_positions[5] -= 0.5 * (joy_axes[5] + 1) * increment; // J6  initial value = -1 (-1 -> +1)
     }
+}
+
+bool check_joint_limits(const std::vector<double> &joint_positions)
+{
+
+    return (joint_positions[0] < -170 || joint_positions[0] > 170 ||
+            joint_positions[1] < -170 || joint_positions[1] > 170 ||
+            joint_positions[2] < -170 || joint_positions[2] > 170 ||
+            joint_positions[3] < -170 || joint_positions[3] > 170 ||
+            joint_positions[4] < -170 || joint_positions[4] > 170 ||
+            joint_positions[5] < -180 || joint_positions[5] > 180);
 }
 // ***
 
@@ -360,31 +383,37 @@ int main(int argc, char **argv)
     spinner.start();
 
     // Subscribe to the camera info topic
-    ros::Subscriber camera_info_sub = nh.subscribe("/camera/depth/camera_info", 1, cameraInfoCallback);
+    ros::Subscriber camera_info_sub = nh.subscribe("/camera/depth/camera_info", 10, cameraInfoCallback);
 
     // Subscribe to the depth image topic
-    ros::Subscriber depth_image_sub = nh.subscribe("/camera/depth/image_rect_raw", 1, depthImageCallback);
+    ros::Subscriber depth_image_sub = nh.subscribe("/camera/depth/image_rect_raw", 10, depthImageCallback);
 
     // Subscribe to the clicked point topic
-    ros::Subscriber clicked_point_sub = nh.subscribe("/clicked_point", 1, clickedPixelCallback);
+    ros::Subscriber clicked_point_sub = nh.subscribe("/clicked_point", 10, clickedPixelCallback);
 
     // Create a publisher for the clicked position
-    clicked_position_pub = nh.advertise<geometry_msgs::Point>("/clicked_position", 1);
+    clicked_position_pub = nh.advertise<geometry_msgs::Point>("/clicked_position", 10);
 
     // Subscribe to the clicked point topic
-    ros::Subscriber clicked_position_sub = nh.subscribe("/clicked_position", 1, clickedPositionCallback);
+    ros::Subscriber clicked_position_sub = nh.subscribe("/clicked_position", 10, clickedPositionCallback);
 
     // Subscribe to the trigger arm
-    ros::Subscriber trigger_arm_sub = nh.subscribe("/trigger_arm", 1, triggerArmCallback);
+    ros::Subscriber trigger_arm_sub = nh.subscribe("/trigger_arm", 10, triggerArmCallback);
 
     // Subscribe to the teleoperation mode
-    ros::Subscriber operation_mode_sub = nh.subscribe("/operation_mode", 1, operationModeCallback);
+    ros::Subscriber operation_mode_sub = nh.subscribe("/operation_mode", 10, operationModeCallback);
+
+    // Subscribe to Joystick data
+    ros::Subscriber joystick_data_sub = nh.subscribe("/joystick_data", 10, joyCallback);
 
     // Create a publisher for arm trigger
-    trigger_arm_pub = nh.advertise<std_msgs::Bool>("/trigger_arm", 1);
+    trigger_arm_pub = nh.advertise<std_msgs::Bool>("/trigger_arm", 10);
 
     // Create a publisher for arm trigger
-    trigger_suction_pub = nh.advertise<std_msgs::Bool>("/trigger_suction", 1);
+    trigger_suction_pub = nh.advertise<std_msgs::Bool>("/trigger_suction", 10);
+
+    // Create a publisher for the joint positions
+    joint_positions_pub = nh.advertise<sensor_msgs::JointState>("/joint_positions", 10);
 
     // Create a subscriber to monitor trajectory execution feedback
     // ros::Subscriber feedback_sub = nh.subscribe("/execute_trajectory/feedback", 10, executeTrajectoryCallback);
@@ -506,8 +535,37 @@ int main(int argc, char **argv)
         }
         else if (operationMode.data == "MANUAL")
         {
-            ROS_INFO("*** Operation mode is MANUAL ***");
+            // ROS_INFO("*** Operation mode is MANUAL ***");
+            bool joint_limit_violated = check_joint_limits(joint_positions);
+            if (!joint_limit_violated)
+            {
+                // std::cout << joint_positions[0] << ", " << joint_positions[1] << ", " << joint_positions[2] << ", " << joint_positions[3] << ", " << joint_positions[4] << ", " << joint_positions[5] << std::endl;
+                // Publish joint states (rad) on joint_states
+                sensor_msgs::JointState joint_states;
+                joint_states.header.stamp = ros::Time::now();
+                joint_states.name.push_back("joint2_to_joint1");
+                joint_states.name.push_back("joint3_to_joint2");
+                joint_states.name.push_back("joint4_to_joint3");
+                joint_states.name.push_back("joint5_to_joint4");
+                joint_states.name.push_back("joint6_to_joint5");
+                joint_states.name.push_back("joint6output_to_joint6");
+                joint_states.position.push_back(joint_positions[0]); // Joint 1 position (radians)
+                joint_states.position.push_back(joint_positions[1]); // Joint 2 position (radians)
+                joint_states.position.push_back(joint_positions[2]); // Joint 3 position (radians)
+                joint_states.position.push_back(joint_positions[3]); // Joint 4 position (radians)
+                joint_states.position.push_back(joint_positions[4]); // Joint 5 position (radians)
+                joint_states.position.push_back(joint_positions[5]); // Joint 6 position (radians)
+
+                // Publish the joint states
+                joint_positions_pub.publish(joint_states);
+            }
+            else
+            {
+                ROS_ERROR("JOINT LIMIT VIOLATION ...!!!");
+            }
+
             robot_in_rest = false;
+            ros::Duration(0.1).sleep(); // Sleep for a short duration to avoid busy-waiting
         }
     }
     return 0;

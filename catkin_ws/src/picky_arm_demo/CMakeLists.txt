@@ -17,6 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
   octomap_msgs
   cv_bridge
   # moveit_visual_tools
+  web_joystick_control
 )
 
 find_package(OpenCV 4 REQUIRED)  # Specify the OpenCV version (adjust the version number if needed)

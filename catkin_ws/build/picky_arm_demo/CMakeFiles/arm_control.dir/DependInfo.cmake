@@ -20,6 +20,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/orin/Orin/catkin_ws/devel/include"
   "/home/orin/Orin/catkin_ws/src/geometric_shapes/include"
   "/home/orin/Orin/catkin_ws/src/srdfdom/include"
   "/opt/ros/noetic/include"
