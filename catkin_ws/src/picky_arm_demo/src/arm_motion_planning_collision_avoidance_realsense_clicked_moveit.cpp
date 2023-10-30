@@ -558,6 +558,10 @@ int main(int argc, char **argv)
 
                 // Publish the joint states
                 joint_positions_pub.publish(joint_states);
+
+                // Suction trigger
+                triggerSuction.data = gripper_command;
+                trigger_suction_pub.publish(triggerSuction);
             }
             else
             {
