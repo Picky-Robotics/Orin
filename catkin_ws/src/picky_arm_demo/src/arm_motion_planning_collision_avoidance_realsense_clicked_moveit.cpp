@@ -34,12 +34,6 @@ bool trajectoryExecuted = false;
 bool dropOff = false;
 bool robot_in_rest = false;
 
-geometry_msgs::Point clickedPixel;
-geometry_msgs::Point clickedPosition;
-std_msgs::Bool triggerArm;
-std_msgs::Bool triggerSuction;
-std_msgs::String operationMode;
-
 // Global variables for clicked point coordinates
 int camera_width = 640;
 int camera_length = 480;
@@ -47,43 +41,24 @@ float mm2m = 0.001;
 double rad2deg = 180.0 / M_PI;
 double deg2rad = M_PI / 180.0;
 float increment = 5.0;
+int gripper_command = 0;
 
+// Messages initialization
+geometry_msgs::Point clickedPixel;
+geometry_msgs::Point clickedPosition;
+std_msgs::Bool triggerArm;
+std_msgs::Bool triggerSuction;
+std_msgs::String operationMode;
+
+// Publisher initialization
 ros::Publisher clicked_position_pub;
 ros::Publisher trigger_arm_pub;
 ros::Publisher trigger_suction_pub;
 ros::Publisher joint_positions_pub;
+ros::Publisher terminal_data_pub;
 
-// ***
-std::vector<double> joint_positions = {0.0, 0.0, 0.0, 0.0, 0.0, 45.0}; // Initialize with zeros
-int gripper_command = 0;
-
-void joyCallback(const web_joystick_control::JoystickData::ConstPtr &joy)
-{
-
-    float joy_axes[6]; // Array to store truncated joystick axes values
-    for (int i = 0; i < 6; i++)
-    {
-        joy_axes[i] = static_cast<int>(joy->axes[i] * 10) / 10.0; // Truncate to one decimal place
-    }
-
-    // Joint positions are in degree.
-    gripper_command = joy->buttons[0];
-    joint_positions[0] -= joy_axes[0] * increment; // J1 -> Left: counter-clockwise, Right: Clockwise
-    joint_positions[1] += joy_axes[1] * increment; // J2
-    joint_positions[2] += joy_axes[3] * increment; // J3
-    joint_positions[3] += joy_axes[4] * increment; // J4
-
-    if (joy->buttons[1])
-    {
-        joint_positions[4] += 0.5 * (joy_axes[2] + 1) * increment; // J5 initial value = -1 (-1 -> +1)
-        joint_positions[5] += 0.5 * (joy_axes[5] + 1) * increment; // J6  initial value = -1 (-1 -> +1)
-    }
-    else
-    {
-        joint_positions[4] -= 0.5 * (joy_axes[2] + 1) * increment; // J5 initial value = -1 (-1 -> +1)
-        joint_positions[5] -= 0.5 * (joy_axes[5] + 1) * increment; // J6  initial value = -1 (-1 -> +1)
-    }
-}
+// Initialize joint positions for Manual mode command.
+std::vector<double> joint_positions = {0.0, 0.0, 0.0, 0.0, 0.0, 45.0};
 
 bool check_joint_limits(const std::vector<double> &joint_positions)
 {
@@ -95,7 +70,6 @@ bool check_joint_limits(const std::vector<double> &joint_positions)
             joint_positions[4] < -170 || joint_positions[4] > 170 ||
             joint_positions[5] < -180 || joint_positions[5] > 180);
 }
-// ***
 
 // Function to convert a geometry_msgs::Pose to a tf::Transform
 tf::Transform get_tf(const geometry_msgs::Pose &pose)
@@ -126,6 +100,103 @@ geometry_msgs::Pose get_pose(const tf::Transform &tf_transform)
     return pose;
 }
 
+bool clear_octomap(ros::ServiceClient &clearOctomapClient, std_srvs::Empty &srv)
+{
+    if (clearOctomapClient.call(srv))
+    {
+        ROS_INFO("Octomap cleared successfully.");
+        ros::Duration(1.0).sleep();
+        ROS_INFO("Wait for 1 sec to update Octomap ...");
+        return true;
+    }
+    else
+    {
+        ROS_ERROR("Failed to call clear_octomap service");
+        return false;
+    }
+}
+
+void move_to_rest()
+{
+    // Initialize MoveIt! interfaces
+    moveit::planning_interface::MoveGroupInterface arm_group("arm_group");
+    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+    ROS_INFO("Arm Group Setup Completed ... Going Rest!");
+
+    arm_group.setPlanningTime(5.0); // Time to plan
+
+    // Set a target pose
+    geometry_msgs::Pose rest_pose;
+    rest_pose.orientation.x = -0.0; // -0.8509035
+    rest_pose.orientation.y = -0.0;
+    rest_pose.orientation.z = -0.0;
+    rest_pose.orientation.w = 1.0; // 0.525322
+    rest_pose.position.x = -0.1923;
+    rest_pose.position.y = -0.1224;
+    rest_pose.position.z = 0.1947;
+    arm_group.setPoseTarget(rest_pose);
+
+    ROS_INFO("MoveIt! is planning to rest pose ...");
+
+    // Planing trajectory.
+    ROS_INFO("Planning to rest pose started ..!");
+    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+    bool success = arm_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
+    ROS_INFO("*** Planning to rest pose finished ***");
+
+    if (success)
+    {
+        ROS_INFO("Planning to rest pose succeeded. Now robot executes the trajectory!");
+        // Execute trajectory.
+        arm_group.execute(my_plan);
+        ROS_INFO("*** Trajectory was executed successfully robot is in rest pose ***");
+    }
+    else
+    {
+        ROS_WARN("Planning to Rest Pose Failed! Check if the target pose is reachable and that there are no collisions.");
+    }
+}
+
+void move_to_dropoff()
+{
+    // Initialize MoveIt! interfaces
+    moveit::planning_interface::MoveGroupInterface arm_group("arm_group");
+    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+    ROS_INFO("Arm Group Setup Completed ... Going DropOff!");
+
+    arm_group.setPlanningTime(5.0); // Time to plan
+
+    // Set a target pose
+    geometry_msgs::Pose dropoff_pose;
+    dropoff_pose.orientation.x = -0.4754915;
+    dropoff_pose.orientation.y = 0.8790473;
+    dropoff_pose.orientation.z = -0.0026067;
+    dropoff_pose.orientation.w = 0.0343051;
+    dropoff_pose.position.x = -0.1865;
+    dropoff_pose.position.y = -0.0235;
+    dropoff_pose.position.z = +0.1981;
+    arm_group.setPoseTarget(dropoff_pose);
+
+    ROS_INFO("MoveIt! is planning to dropoff pose ...");
+
+    // Planing trajectory.
+    ROS_INFO("Planning started ..!");
+    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+    bool success = arm_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
+    ROS_INFO("*** Planning finished ***");
+
+    if (success)
+    {
+        ROS_INFO("Planning succeeded. Now robot executes the trajectory!");
+        // Execute trajectory.
+        arm_group.execute(my_plan);
+    }
+    else
+    {
+        ROS_WARN("Planning Failed! Check if the target pose is reachable and that there are no collisions.");
+    }
+}
+
 // void executeTrajectoryCallback(const moveit_msgs::ExecuteTrajectoryFeedbackConstPtr &feedback)
 // {
 //     if (feedback->state == actionlib::SimpleClientGoalState::SUCCEEDED)
@@ -143,6 +214,34 @@ geometry_msgs::Pose get_pose(const tf::Transform &tf_transform)
 //     //     // Now you can proceed with another task.
 //     // }
 // }
+
+// Callback for joystick messages to update joint positions
+void joyCallback(const web_joystick_control::JoystickData::ConstPtr &joy)
+{
+    float joy_axes[6]; // Array to store truncated joystick axes values
+    for (int i = 0; i < 6; i++)
+    {
+        joy_axes[i] = static_cast<int>(joy->axes[i] * 10) / 10.0; // Truncate to one decimal place
+    }
+
+    // Joint positions are in degree.
+    gripper_command = joy->buttons[0];
+    joint_positions[0] -= joy_axes[0] * increment; // J1 -> Left: counter-clockwise, Right: Clockwise
+    joint_positions[1] += joy_axes[1] * increment; // J2
+    joint_positions[2] += joy_axes[3] * increment; // J3
+    joint_positions[3] += joy_axes[4] * increment; // J4
+
+    if (joy->buttons[1])
+    {
+        joint_positions[4] += 0.5 * (joy_axes[2] + 1) * increment; // J5 initial value = -1 (-1 -> +1)
+        joint_positions[5] += 0.5 * (joy_axes[5] + 1) * increment; // J6  initial value = -1 (-1 -> +1)
+    }
+    else
+    {
+        joint_positions[4] -= 0.5 * (joy_axes[2] + 1) * increment; // J5 initial value = -1 (-1 -> +1)
+        joint_positions[5] -= 0.5 * (joy_axes[5] + 1) * increment; // J6  initial value = -1 (-1 -> +1)
+    }
+}
 
 // Callback for the camera info message
 void cameraInfoCallback(const sensor_msgs::CameraInfo::ConstPtr &msg)
@@ -278,103 +377,6 @@ void operationModeCallback(const std_msgs::String::ConstPtr &msg)
     operationMode = *msg;
 }
 
-bool clear_octomap(ros::ServiceClient &clearOctomapClient, std_srvs::Empty &srv)
-{
-    if (clearOctomapClient.call(srv))
-    {
-        ROS_INFO("Octomap cleared successfully.");
-        ros::Duration(1.0).sleep();
-        ROS_INFO("Wait for 1 sec to update Octomap ...");
-        return true;
-    }
-    else
-    {
-        ROS_ERROR("Failed to call clear_octomap service");
-        return false;
-    }
-}
-
-void move_to_rest()
-{
-    // Initialize MoveIt! interfaces
-    moveit::planning_interface::MoveGroupInterface arm_group("arm_group");
-    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
-    ROS_INFO("Arm Group Setup Completed ... Going Rest!");
-
-    arm_group.setPlanningTime(5.0); // Time to plan
-
-    // Set a target pose
-    geometry_msgs::Pose rest_pose;
-    rest_pose.orientation.x = -0.0; // -0.8509035
-    rest_pose.orientation.y = -0.0;
-    rest_pose.orientation.z = -0.0;
-    rest_pose.orientation.w = 1.0; // 0.525322
-    rest_pose.position.x = -0.1923;
-    rest_pose.position.y = -0.1224;
-    rest_pose.position.z = 0.1947;
-    arm_group.setPoseTarget(rest_pose);
-
-    ROS_INFO("MoveIt! is planning to rest pose ...");
-
-    // Planing trajectory.
-    ROS_INFO("Planning to rest pose started ..!");
-    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-    bool success = arm_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
-    ROS_INFO("*** Planning to rest pose finished ***");
-
-    if (success)
-    {
-        ROS_INFO("Planning to rest pose succeeded. Now robot executes the trajectory!");
-        // Execute trajectory.
-        arm_group.execute(my_plan);
-        ROS_INFO("*** Trajectory was executed successfully robot is in rest pose ***");
-    }
-    else
-    {
-        ROS_WARN("Planning to Rest Pose Failed! Check if the target pose is reachable and that there are no collisions.");
-    }
-}
-
-void move_to_dropoff()
-{
-    // Initialize MoveIt! interfaces
-    moveit::planning_interface::MoveGroupInterface arm_group("arm_group");
-    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
-    ROS_INFO("Arm Group Setup Completed ... Going DropOff!");
-
-    arm_group.setPlanningTime(5.0); // Time to plan
-
-    // Set a target pose
-    geometry_msgs::Pose dropoff_pose;
-    dropoff_pose.orientation.x = -0.4754915;
-    dropoff_pose.orientation.y = 0.8790473;
-    dropoff_pose.orientation.z = -0.0026067;
-    dropoff_pose.orientation.w = 0.0343051;
-    dropoff_pose.position.x = -0.1865;
-    dropoff_pose.position.y = -0.0235;
-    dropoff_pose.position.z = +0.1981;
-    arm_group.setPoseTarget(dropoff_pose);
-
-    ROS_INFO("MoveIt! is planning to dropoff pose ...");
-
-    // Planing trajectory.
-    ROS_INFO("Planning started ..!");
-    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-    bool success = arm_group.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
-    ROS_INFO("*** Planning finished ***");
-
-    if (success)
-    {
-        ROS_INFO("Planning succeeded. Now robot executes the trajectory!");
-        // Execute trajectory.
-        arm_group.execute(my_plan);
-    }
-    else
-    {
-        ROS_WARN("Planning Failed! Check if the target pose is reachable and that there are no collisions.");
-    }
-}
-
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "Arm_Realsense");
@@ -415,6 +417,9 @@ int main(int argc, char **argv)
     // Create a publisher for the joint positions
     joint_positions_pub = nh.advertise<sensor_msgs::JointState>("/joint_positions", 10);
 
+    // Create a publisher for the terminal data
+    terminal_data_pub = nh.advertise<std_msgs::String>("/terminal_data", 10);
+
     // Create a subscriber to monitor trajectory execution feedback
     // ros::Subscriber feedback_sub = nh.subscribe("/execute_trajectory/feedback", 10, executeTrajectoryCallback);
 
@@ -432,13 +437,13 @@ int main(int argc, char **argv)
     ROS_INFO("Ocotomap Service Client is Up!");
     triggerSuction.data = false;
     trigger_suction_pub.publish(triggerSuction);
-    ROS_INFO("Suction Pump is OFF.");
+    ROS_INFO("Suction Pump is Ready.");
 
     while (ros::ok())
     {
         if (operationMode.data == "AUTO")
         {
-            ROS_INFO("*** Operation mode is AUTO ***");
+            // ROS_INFO("*** Operation mode is AUTO ***");
             octomap_clear = false;
             trajectoryExecuted = false;
             dropOff = false;
@@ -446,7 +451,7 @@ int main(int argc, char **argv)
             // Move robot to rest pose
             if (!robot_in_rest)
             {
-                ROS_INFO("Move Robot to Rest Pose.");
+                ROS_INFO("Moving Robot to Rest Pose ...");
                 move_to_rest();
                 robot_in_rest = true;
             }
@@ -468,7 +473,26 @@ int main(int argc, char **argv)
                 if (octomap_clear)
                 {
                     // Specify the reference frame
-                    arm_group.setPlanningTime(5.0); // Time to plan
+                    // arm_group.setPlanningTime(5.0); // Time to plan
+
+                    // Set the maximum planning attempts
+                    arm_group.setNumPlanningAttempts(3); // This will make MoveIt try multiple times for better plans
+
+                    // Set the maximum planning time to spend on each attempt
+                    arm_group.setPlanningTime(2.0); // You can adjust this value to reduce latency
+
+                    // Increase the tolerance for goal position and orientation
+                    arm_group.setGoalPositionTolerance(0.02);   // Adjust as needed
+                    arm_group.setGoalOrientationTolerance(0.1); // Adjust as needed
+
+                    // Set the maximum planning iterations
+                    arm_group.setMaxVelocityScalingFactor(1.0); // You can increase this factor to speed up the motion
+
+                    // Enable or disable self-collision checking
+                    arm_group.setStartStateToCurrentState(); // This avoids self-collisions for faster planning
+
+                    // Set a planner to use (e.g., RRT, RRTConnect, etc.)
+                    arm_group.setPlannerId("RRTConnect"); // Use a faster planner if available
 
                     // Set a target pose
                     geometry_msgs::Pose target_pose;
@@ -565,7 +589,12 @@ int main(int argc, char **argv)
             }
             else
             {
-                ROS_ERROR("JOINT LIMIT VIOLATION ...!!!");
+                // ROS_ERROR("JOINT LIMIT VIOLATION ...!!!");
+                std_msgs::String joint_violation_error;
+                // std::stringstream error_message;
+                // error_message << "[ERROR] JOINT LIMIT VIOLATION " << joint_index << " ...!!! Please";
+                joint_violation_error.data = "[ERROR] JOINT LIMIT VIOLATION ...!!! Please Use Joystick to Recover the Arm.";
+                terminal_data_pub.publish(joint_violation_error);
             }
 
             robot_in_rest = false;
